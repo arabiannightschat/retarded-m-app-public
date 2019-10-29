@@ -14,7 +14,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
 	"appid": "wx3c56e6bc3d72a4eb",
-	"projectname": "retarded-m-app",
+	"projectname": "retarded-m-app-public",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
