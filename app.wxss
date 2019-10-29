@@ -1,0 +1,238 @@
+.rm-nav-margin {
+  height: 100rpx;
+}
+
+.navs {
+  background-color: #ffffff;
+  border-top: 1rpx #f8f8f8 solid;
+  position: fixed;
+  height: 100rpx;
+  width:100%;
+  bottom:0;
+}
+
+.nav {
+  display: flex;
+  float: left;
+  flex-direction: column;
+  padding: 10rpx 102.5rpx 0 102.5rpx;
+}
+
+.nav-plus {
+  display: flex;
+  float: left;
+  width: 45rpx;
+  flex-direction: column;
+  padding: 10rpx 102.5rpx 0 102.5rpx;
+}
+
+.nav .icons {
+  font-size: 45rpx;
+  margin-bottom: 5rpx;
+  text-align: center;
+  color:#bfbfbf;
+}
+
+.nav .text {
+  font-size: 23rpx;
+  margin:0 auto;
+  color: #bfbfbf;
+}
+
+.nav-plus .plus {
+  position: absolute;
+  left: 50%;
+  margin-left: -60rpx;
+  top: -55rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 882042 */
+  src: url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.eot');
+  src: url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.woff') format('woff'),
+  url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-music:before {
+  content: "\e642";
+}
+
+.icon-song:before {
+  content: "\e609";
+}
+
+.icon-drink:before {
+  content: "\e61e";
+}
+
+.icon-set:before {
+  content: "\e606";
+}
+
+.icon-minus-thin:before {
+  content: "\e643";
+}
+
+.icon-idea:before {
+  content: "\e6d3";
+}
+
+.icon-lunch:before {
+  content: "\e6e8";
+}
+
+.icon-delete:before {
+  content: "\e68d";
+}
+
+.icon-rmb:before {
+  content: "\e66b";
+}
+
+.icon-notes:before {
+  content: "\e6b0";
+}
+
+.icon-backspace:before {
+  content: "\e69f";
+}
+
+.icon-filter:before {
+  content: "\e611";
+}
+
+.icon-phone:before {
+  content: "\e632";
+}
+
+.icon-gift:before {
+  content: "\e62d";
+}
+
+.icon-supermarket:before {
+  content: "\e631";
+}
+
+.icon-costume:before {
+  content: "\e666";
+}
+
+.icon-tuikuan:before {
+  content: "\e614";
+}
+
+.icon-dinner:before {
+  content: "\e677";
+}
+
+.icon-relax:before {
+  content: "\e679";
+}
+
+.icon-wine:before {
+  content: "\e617";
+}
+
+.icon-shopping:before {
+  content: "\e603";
+}
+
+.icon-export:before {
+  content: "\e6de";
+}
+
+.icon-sports:before {
+  content: "\e612";
+}
+
+.icon-truck:before {
+  content: "\e61d";
+}
+
+.icon-records:before {
+  content: "\e662";
+}
+
+.icon-traffic:before {
+  content: "\e621";
+}
+
+.icon-meizhuang:before {
+  content: "\e605";
+}
+
+.icon-hongbao:before {
+  content: "\e619";
+}
+
+.icon-down:before {
+  content: "\e696";
+}
+
+.icon-left:before {
+  content: "\e697";
+}
+
+.icon-up:before {
+  content: "\e698";
+}
+
+.icon-more:before {
+  content: "\e600";
+}
+
+.icon-friut:before {
+  content: "\e60b";
+}
+
+.icon-foods:before {
+  content: "\e668";
+}
+
+.icon-breakfast:before {
+  content: "\e66e";
+}
+
+.icon-mine:before {
+  content: "\e604";
+}
+
+.icon-shoe:before {
+  content: "\e608";
+}
+
+.icon-start:before {
+  content: "\e661";
+}
+
+.icon-other:before {
+  content: "\e761";
+}
+
+.icon-dailyuse:before {
+  content: "\e60e";
+}
+
+.icon-bonus:before {
+  content: "\e601";
+}
+
+.icon-pay:before {
+  content: "\e68f";
+}
+
+.icon-plus-thin:before {
+  content: "\e807";
+}

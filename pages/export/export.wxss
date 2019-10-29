@@ -1,0 +1,101 @@
+.export-records {
+  padding: 30rpx;
+  font-size: 25rpx;
+  text-align: center;
+  display: flex;
+  flex: row;
+  justify-content : space-between;
+}
+
+.section-child {
+  padding: 10rpx 0 ;
+  text-align: center;
+  border-radius: 10rpx;
+  border: 2rpx solid #000000;
+}
+
+.dateinput {
+  width: 220rpx;
+  height: 40rpx;
+  text-align: center;
+}
+
+.section-child-btn {
+  border-radius: 10rpx;
+}
+
+.btn {
+  line-height: 40rpx;
+  font-size: 40rpx;
+  top: 15rpx;
+  position: relative;
+  padding: 0 20rpx;
+}
+
+.chooseBox{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+}
+
+.day-records {
+  margin: 40rpx 0;
+}
+
+.title-date-records {
+  margin: 0 375rpx 0 30rpx;
+}
+
+.date-records {
+  font-size: 30rpx;
+  padding: 0 0 10rpx 30rpx;
+  border-bottom: 1rpx #bfbfbf solid;
+}
+
+.picker-tip {
+  background: #fff;
+  border-top: 1px #f8f8f8 solid;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+/* copy from records */
+
+.records {
+  margin: 0rpx 25rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.record {
+  font-size: 25rpx;
+  padding: 0 30rpx;
+  width: 285rpx;
+  height:70rpx;
+}
+
+.icon {
+  height: 60rpx;
+  margin: 20rpx 0;
+  width: 60rpx;
+  float: left;
+}
+
+.img {
+  top: 10rpx;
+  left: 10rpx;
+  line-height: 40rpx;
+  font-size: 40rpx;
+  position: relative;
+}
+
+.item {
+  padding-left: 10rpx;
+  line-height: 100rpx;
+}
+
+.amount {
+  float: right;
+  line-height: 100rpx;
+}

@@ -1,0 +1,61 @@
+.top {
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  flex: row;
+  justify-content: space-between;
+  padding: 0 50rpx;
+  font-size: 25rpx;
+}
+
+.noteType {
+  padding: 0 100rpx;
+}
+
+.new-note {
+  padding: 20rpx 50rpx;
+  font-size: 25rpx;
+}
+
+.section {
+  margin: 30rpx 0;
+}
+
+.section .title {
+  font-size: 25rpx;
+  margin: 20rpx 0;
+}
+
+.section .rem {
+  margin: 20rpx 0;
+  color: #bfbfbf;
+}
+
+.section .content {
+  margin: 20rpx 0;
+  height: 70rpx;
+  border-bottom: 1rpx #f8f8f8 solid;
+}
+
+.section .input {
+  width: 500rpx;
+  font-size: 40rpx;
+  height: 70rpx;
+}
+
+.section .btn {
+  margin: 50rpx 0;
+  height: 100rpx;
+  width: 400rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.disabled {
+  color: #bfbfbf
+}
+
+.padding-left-10 {
+  padding-left: 10rpx;
+}

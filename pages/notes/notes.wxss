@@ -1,0 +1,119 @@
+
+.banners {
+  width: 100%;
+  height: 300rpx;
+  overflow: hidden;
+}
+
+.banner {
+  width: 100%;
+  height: 300rpx;
+}
+
+.notes {
+  margin: 30rpx 24rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.note {
+  width: 180rpx;
+  margin: 20rpx 27rpx 15rpx 27rpx;
+  position: relative
+}
+
+.rectangle {
+  width: 100%;
+  height: 250rpx;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow:5rpx 5rpx 10rpx 0rpx #aaaaaa;
+}
+
+.no-shadow {
+  box-shadow:none;
+}
+
+.diedstime {
+  position: absolute;
+  top: 30rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 22rpx;
+  color: #ffffff;
+}
+
+.name {
+  display: block;
+  font-size: 22rpx;
+  text-align: justify;
+}
+
+.name .nn{ 
+  display:inline-block; 
+  width:100%;
+}
+
+.isShowDieds {
+  height: 100rpx;
+  width: 100%;
+  font-size: 22rpx;
+  line-height: 100rpx;
+  margin: -15rpx 27rpx 0 27rpx;
+  color: #bfbfbf;
+
+}
+
+.plusNote {
+  font-size: 150rpx;
+  font-style: bold;
+  line-height: 250rpx;
+  text-align: center;
+  color: #ffffff;
+}
+
+.active {
+  background: #FFE4E1;
+}
+
+.padding-left-10 {
+  padding-left: 10rpx;
+}
+
+.op-models {
+  position: absolute;
+  box-shadow: 0rpx 0rpx 15rpx 0 #aaaaaa;
+  width:200rpx;
+  font-size: 25rpx;
+  height:70rpx;
+  top:150rpx;
+  z-index: 10000;
+  text-align: center;
+  line-height: 70rpx;
+  background: #ffffff
+}
+
+.op-model {
+  height: 70rpx;
+  width: 100%;
+  border-bottom:1rpx #f8f8f8 solid; 
+}
+
+.wrap {
+  width: 180rpx;
+  height: 250rpx;
+  position: absolute;
+  opacity: 0.3;
+  background: #cfcfcf 
+
+}
+
+.fill-all {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  top: 0;
+}

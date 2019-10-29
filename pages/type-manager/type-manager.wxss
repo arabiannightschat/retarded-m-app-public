@@ -1,0 +1,132 @@
+
+.top {
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  flex: row;
+  justify-content: space-between;
+  padding: 0 50rpx 10rpx 50rpx;
+  font-size: 25rpx;
+  background: #fff;
+  position: fixed;
+  width: 650rpx;
+  top: 0
+}
+
+.rm-top-margin {
+  height: 100rpx;
+}
+
+.recordType {
+  padding: 0 120rpx;
+}
+
+.types {
+  margin: 20rpx 20rpx 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.type {
+  font-size: 25rpx;
+  padding: 0 10rpx 0 30rpx;
+  width: 670rpx;
+  height: 100rpx;
+  border-bottom: 1rpx #f8f8f8 solid;
+}
+
+.type .icon-wrap {
+  height: 60rpx;
+  margin: 20rpx 0;
+  width: 60rpx;
+  float: left;
+  border-radius: 30rpx;
+  background: #f8f8f8;
+  position: relative;
+  z-index: -100
+}
+
+.type .icon {
+  top: 10rpx;
+  left: 10rpx;
+  line-height: 40rpx;
+  font-size: 40rpx;
+  position: relative;
+  z-index: -99
+}
+
+.type .item {
+  padding-left: 25rpx;
+  line-height: 100rpx;
+  float: left;
+}
+
+.type .bind-area {
+  padding: 30rpx 35rpx;
+  float: right;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.type .icon-wrap-operate {
+  line-height: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  color: #000000;
+  position: relative;
+  z-index: -100
+}
+
+.type .bind-area .del {
+  background:#FF6060;
+  color: #fff
+}
+
+.type .bind-area .add {
+  background:#60ff60;
+  color: #fff
+}
+
+.type .bind-area .circle-disabled {
+  background:#f8f8f8;
+}
+
+.type .icon-operate {
+  position: relative;
+  left: 12rpx;
+  top: -5rpx;
+  font-size: 15rpx;
+  font-weight: bold;
+  z-index: -99
+}
+
+.btns {
+  margin: 40rpx 50rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 25rpx;
+}
+
+.btn {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 45rpx;
+  border-radius: 10rpx;
+  box-shadow:5rpx 5rpx 10rpx 0rpx #bfbfbf;
+}
+
+.default-title {
+  height: 50rpx;
+  width: 100%;
+  font-size: 22rpx;
+  line-height: 50rpx;
+  margin: 0 50rpx;
+  color: #bfbfbf;
+}
+
+.padding-left-10 {
+  padding-left: 10rpx;
+}

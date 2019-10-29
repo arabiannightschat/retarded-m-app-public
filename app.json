@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/records/records",
+    "pages/new-note/new-note",
+    "pages/notes/notes",
+    "pages/type-manager/type-manager",
+    "pages/export/export",
+    "pages/new-record/new-record",
+    "pages/mine/mine",
+    "pages/mine/feedback/feedback"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#86d2f9",
+    "navigationBarTitleText": "阿账 - 幸福记账",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

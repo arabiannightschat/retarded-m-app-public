@@ -1,0 +1,42 @@
+<view class='banners'>
+  <image class='banner' src='../../images/banners/banner2.jpg'></image>
+</view>
+<view class='notes'>
+  <view class='note' wx:key wx:for="{{notesCrazy}}" data-crazy-id='{{item.crazyId}}' data-create-dt='{{item.createDt}}' bindtap='openCrazyNotes' wx:for-index="index" bindlongpress='modal' data-index='{{index}}'>
+    <view class='wrap' wx:if='{{item.opShow}}'></view>
+    <view class='op-models' style='left: {{index % 3 == 2? "-65rpx" :"50rpx"  }}' wx:if="{{item.opShow}}">
+      <view class='op-model' catchtap='del' data-id='{{item.crazyId}}'>删除</view>
+      <!-- <view class='op-model'>其他操作</view> -->
+    </view>
+    <image wx:if='{{globalData.currNote == item.crazyId}}' class='rectangle' src='../../images/covers/cover3-active.jpg'></image>
+    <image wx:else class='rectangle' src='../../images/covers/cover3.jpg'></image>
+    <!-- <text class='name'>{{item.name}}<text class='nn'></text></text> -->
+  </view>
+  <view class='note' wx:key wx:for="{{notes}}" data-notes-id='{{item.notesId}}' bindtap='openNotes'>
+    <view class="rectangle {{globalData.currNote == item.notesId?'active':''}}"></view>
+    <text class='name'>{{item.name}}<text class='nn'></text></text>
+  </view>
+  <view class='note' bindtap='addNote'>
+    <view class='rectangle no-shadow'>
+      <view class='plusNote'>+</view>
+    </view>
+  </view>
+
+  <view wx:if="{{isExistDieds}}" class='isShowDieds' bindtap='changeShowDieds'>
+    <text>以下是已结束的账本，点击{{isShowDieds?'收起':'展开'}}</text>
+    <text wx:if="{{isShowDieds}}" class='iconfont icon-up padding-left-10'></text>
+    <text wx:else class='iconfont icon-down padding-left-10'></text>
+  </view>
+
+  <view class='note' wx:if="{{isShowDieds}}" wx:key wx:for="{{diedsCrazy}}">
+    <text class='diedstime'>{{item.createDt}}\n{{item.finishDt}}</text>
+    <image class='rectangle' src='../../images/covers/cover3-finished.jpg'></image>
+    <text class='name'>{{item.name}}<text class='nn'></text></text>
+  </view>
+  <view class='note' wx:if="{{isShowDieds}}" wx:key wx:for="{{dieds}}">
+    <view class='rectangle'></view>
+    <text class='name'>{{item.name}}<text class='nn'></text></text>
+  </view>
+</view>
+<view wx:if="{{modaling}}" class='fill-all' bindtap='clear'></view>
+<include src="../nav/nav.wxml"/>

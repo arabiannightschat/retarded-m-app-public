@@ -1,0 +1,114 @@
+<view class='top'>
+  <view class='recordType' data-type='0' bindtap='changeRecordsType' 
+    style="{{recordsType == 0?'border-bottom: 10rpx '+globalData.UI.secondColor+' solid;':'border-bottom: 10rpx #f8f8f8 solid'}}">支出</view>
+  <view class='recordType' data-type='1' bindtap='changeRecordsType' 
+    style="{{recordsType == 1?'border-bottom: 10rpx '+globalData.UI.secondColor+' solid;':'border-bottom: 10rpx #f8f8f8 solid'}}">收入</view>
+</view>
+<view class='rm-top-margin'></view>
+<!-- 用户拥有的类型 -->
+<view class='types' wx:if='{{recordsType == 0}}'>
+  <view class='type' wx:key wx:for="{{expendList}}">
+    <view class='icon-wrap' style='background:{{item.color}}'>
+      <text class='icon iconfont {{item.icon}}'></text>
+    </view>
+    <text class='item'>{{item.name}}</text>
+    <view class='bind-area' bindtap='up' data-ix="{{item.ix}}">
+      <view class='icon-wrap-operate' style='background:{{item.ix == 0 ? "#f8f8f8" : item.color}}'>
+        <text class='icon-operate iconfont icon-up'></text>
+      </view>
+    </view>
+    <view class='bind-area' bindtap='down' data-ix="{{item.ix}}">
+      <view class='icon-wrap-operate' style='background:{{item.ix == expendList.length - 1 ? "#f8f8f8" : item.color}}'>
+        <text class='icon-operate iconfont icon-down'></text>
+      </view>
+    </view>
+    <view class='bind-area' bindtap='del' data-ix="{{item.ix}}">
+      <view class='icon-wrap-operate del'>
+        <text class='icon-operate iconfont icon-minus-thin'></text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='types' wx:if='{{recordsType == 1}}'>
+  <view class='type' wx:key wx:for = "{{incomeList}}">
+    <view class='icon-wrap'>
+      <text class='icon iconfont {{item.icon}}'></text>
+    </view>
+    <text class='item'>{{item.name}}</text>
+    <view class='bind-area' bindtap='up' data-ix="{{item.ix}}">
+      <view class='icon-wrap-operate' style='background:{{item.ix == 0 ? "#f8f8f8" : item.color}}'>
+        <text class='icon-operate iconfont icon-up'></text>
+      </view>
+    </view>
+    <view class='bind-area' bindtap='down' data-ix="{{item.ix}}">
+      <view class='icon-wrap-operate' style='background:{{item.ix == incomeList.length - 1 ? "#f8f8f8" : item.color}}'>
+        <text class='icon-operate iconfont icon-down'></text>
+      </view>
+    </view>
+    <view class='bind-area' bindtap='del' data-ix="{{item.ix}}">
+      <view class='icon-wrap-operate del'>
+        <text class='icon-operate iconfont icon-minus-thin'></text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 按钮区域 -->
+<view class='btns'>
+  <view class='btn' bindtap='newType' style='background:{{globalData.UI.secondColor}}'>添加{{recordsType==0?'支出':'收入'}}类型</view>
+  <view class='btn' bindtap='commit' style='background:{{globalData.UI.secondColor}}'>确认修改</view>
+  <view class='btn' bindtap='reset' style='background:{{globalData.UI.secondColor}}'>重置修改</view>
+</view>
+<view bindtap='bindShowDefault'>
+  <view wx:if="{{isShowDefault}}" class='default-title'>以下是系统默认类型，可以快捷添加到我的类型中<text class='iconfont icon-up padding-left-10'></text></view>
+  <view wx:else class='default-title'>已收起，点击展开系统默认类型<text class='iconfont icon-down padding-left-10'></text></view>
+</view>
+
+
+<!-- 系统默认类型 -->
+<view class='types' wx:if='{{isShowDefault && recordsType == 0}}'>
+  <view class='type' wx:key wx:for="{{defaultExpendList}}">
+    <view class='icon-wrap'>
+      <text class='icon iconfont {{item.icon}}'></text>
+    </view>
+    <text class='item'>{{item.name}}</text>
+    <view class='bind-area'>
+      <view class='icon-wrap-operate circle-disabled'>
+        <text class='icon-operate iconfont icon-up'></text>
+      </view>
+    </view>
+    <view class='bind-area'>
+      <view class='icon-wrap-operate circle-disabled'>
+        <text class='icon-operate iconfont icon-down'></text>
+      </view>
+    </view>
+    <view class='bind-area' bindtap='add' data-type="{{item.typeId}}">
+      <view class='icon-wrap-operate add'>
+        <text class='icon-operate iconfont icon-plus-thin'></text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='types' wx:if='{{isShowDefault && recordsType == 1}}'>
+  <view class='type' wx:key wx:for = "{{defaultIncomeList}}">
+    <view class='icon-wrap'>
+      <text class='icon iconfont {{item.icon}}'></text>
+    </view>
+    <text class='item'>{{item.name}}</text>
+    <view class='bind-area'>
+      <view class='icon-wrap-operate circle-disabled'>
+        <text class='icon-operate iconfont icon-up'></text>
+      </view>
+    </view>
+    <view class='bind-area'>
+      <view class='icon-wrap-operate circle-disabled'>
+        <text class='icon-operate iconfont icon-down'></text>
+      </view>
+    </view>
+    <view class='bind-area' bindtap='add' data-type="{{item.typeId}}">
+      <view class='icon-wrap-operate add'>
+        <text class='icon-operate iconfont icon-plus-thin'></text>
+      </view>
+    </view>
+  </view>
+</view>

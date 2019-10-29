@@ -1,0 +1,52 @@
+<view class='top' style='background:{{globalData.UI.color}};color:{{globalData.UI.frontColor}}'>
+  <view class='settle'>
+    <text>当前结余：</text><text wx:if='{{moneys.month_settle_none!=""}}' class='margin-left-5'>-</text>
+    <text class='large'>{{moneys.month_settle}}</text>
+  </view>
+  <view class='settle'>
+    <text>日花销：</text><text wx:if='{{moneys.day_settle_none!=""}}' class='margin-left-5'>-</text>
+    <text class='large'>{{moneys.day_settle}}</text>
+  </view>
+  <view class='export' bindtap='exportpage'>
+      <text class='iconfont icon-export'></text>
+  </view>
+  <view style='clear:both'></view>
+</view>
+<view class='records'>
+  <view class='record'>
+    <view class='icon'>
+      <text class='img iconfont icon-start'></text>
+    </view>
+    <text class='item'>今日凌晨</text>
+    <text class='amount'>{{moneys.day_start}}</text>
+  </view>
+  <view class='record' wx:key wx:for="{{recordsList}}" wx:for-index="index" bindlongpress='modal' data-index='{{index}}' style='background: {{item.delShow == true?"#f8f8f8" : "#ffffff"}}'>
+    <view class='del-model' bindtap='del' data-id='{{item.recordsId}}' wx:if="{{item.delShow == true}}">删除</view>
+    <view class='icon'>
+      <text class='img iconfont {{item.icon}}'></text>
+    </view>
+    <text class='item'>{{item.name}}</text>
+    <text class='amount'>{{item.type == 0 ? '-' : '+'}} {{item.money}}</text>
+  </view>
+  <view class='record'>
+    <view class='icon'>
+      <text class='img iconfont icon-start'></text>
+    </view>
+    <text class='item'>今日结余</text>
+    <text class='amount'>{{moneys.day_end}}</text>
+  </view>
+</view>
+<section class="dateSection">
+    <swiper class='timeScroll' duration="300" display-multiple-items="5" bindchange="change" current="{{current}}">
+      <swiper-item bindtap="dateTap" data-date="{{item.date}}" wx:key wx:for="{{dateList}}">
+        <view class='date {{item.classText}}date'>
+          <text class='month'>{{item.date}}</text>
+          <text class='day {{item.classText}}'>{{item.text}}</text>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="bottom"></view>
+</section>
+<view wx:if="{{modaling}}" class='fill-all' bindtap='clear'></view>
+<view class='rm-datesection-margin'></view>
+<include src="../nav/nav.wxml"/>

@@ -1,0 +1,27 @@
+<view class="mine" style="background:{{globalData.UI.secondColor}};" bindtap='change'>
+  <view class="userinfo">
+    <open-data type="userAvatarUrl" class="userinfo-avatar"></open-data>
+    <open-data type="userNickName" style="color:#000000"></open-data>
+  </view>
+</view>
+<view wx:if="{{!authUserInfo}}" class="row">
+  <button class='nostyle' open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo'>
+    <text>加入用户体验计划</text>
+    <text class='rem'>授权您的昵称头像信息</text>
+  </button>
+</view>
+<view wx:else class="row">
+  <button class='nostyle' open-type='getUserInfo' bindgetuserinfo='bindGetUserInfo'>
+    <text>感谢您的支持</text>
+    <text class='rem'>已授权昵称头像信息</text>
+  </button>
+</view>
+<view class="row" bindtap='typeManager'><view>
+  <text>账目类型管理</text>
+  <text class='rem'>整理常用的收入支出类型</text>
+</view></view>
+<view class="row" bindtap='feedback'><view>
+  <text>反馈建议</text>
+  <text class='rem'>和开发者交换想法</text>
+</view></view>
+<include src="../nav/nav.wxml"/>
