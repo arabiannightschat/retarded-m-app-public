@@ -19,7 +19,7 @@
 }
 
 .section .content {
-  border:1rpx #f8f8f8 solid;
+  border:8rpx #f8f8f8 dashed;
   border-radius: 10rpx;
   padding: 20rpx;
 }

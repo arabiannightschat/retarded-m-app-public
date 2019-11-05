@@ -16,13 +16,18 @@ Page({
   },
   
   change: function(){
-    if (app.globalData.UI.style == "3"){
-      style.changeUI("5");
-    } else if (app.globalData.UI.style == "5"){
-      style.changeUI("6");
-    } else if (app.globalData.UI.style == "6") {
-      style.changeUI("3");
+    var idxList = style.getStyleIdxList();
+    for (var i = 0; i < idxList.length ; i++) {
+      if (idxList[i] == app.globalData.UI.style) {
+        if(i == idxList.length - 1){
+          style.changeUI(idxList[0])
+        } else {
+          style.changeUI(idxList[i+1])
+        }
+        break
+      }
     }
+    
     this.setData({
       globalData: app.globalData
     });

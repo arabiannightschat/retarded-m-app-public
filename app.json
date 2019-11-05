@@ -1,12 +1,14 @@
 {
   "pages": [
     "pages/records/records",
-    "pages/new-note/new-note",
-    "pages/notes/notes",
-    "pages/type-manager/type-manager",
     "pages/export/export",
     "pages/new-record/new-record",
+
+    "pages/notes/notes",
+    "pages/new-note/new-note",
+
     "pages/mine/mine",
+    "pages/type-manager/type-manager",
     "pages/mine/feedback/feedback"
   ],
   "window": {

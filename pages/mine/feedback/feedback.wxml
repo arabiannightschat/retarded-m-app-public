@@ -2,14 +2,14 @@
 <view class='feedback'>
   <view class='section'>
     <view class='title'>填写您的反馈建议</view>
-    <view class='content' style='border-color: {{globalData.UI.color}}'>
+    <view class='content' style='border-color: {{globalData.UI.secondColor}}'>
       <textarea class='textarea' placeholder-style='color:#dfdfdf' placeholder="开发者会认真阅读并与你取得联系" 
         maxlength="-1" auto-focus show-confirm-bar='{{false}}' bindinput="bindContentInput"/>
     </view>
   </view>
   <view class='section'>
     <view class='title'>可以的话，留下微信号方便联系</view>
-    <view class='content' style='border-color: {{globalData.UI.color}}'>
+    <view class='content' style='border-color: {{globalData.UI.secondColor}}'>
       <input class='input' placeholder-style='color:#dfdfdf' :value='{{wechatId}}' bindinput="bindWechatIdInput"
         placeholder='14702453690'/>
     </view>

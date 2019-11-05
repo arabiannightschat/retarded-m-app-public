@@ -22,7 +22,7 @@
     <view class='rem'>可以根据月花销能力和期望来估算，如果月花销期望在900元左右，则可以设置为30元/天，月花销期望是3000元时，设置100元/天，不必考虑大小月份闰月闰年的事情</view>
   </view>
   <view class='section' bindtap='create'>
-    <view class='btn' style='background: {{globalData.UI.color}}'>创建疯狂账本</view>
+    <view class='btn' style='background: {{globalData.UI.color}};color:{{globalData.UI.frontColor}}'>创建疯狂账本</view>
   </view>
   <!-- <view class='section' bindtap='tapSettleDate'>
     <view class='section-child-title'>
