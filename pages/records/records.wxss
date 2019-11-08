@@ -138,7 +138,7 @@
 
 .del-model {
   position: absolute;
-  box-shadow: 0rpx 0rpx 15rpx 0 #aaaaaa;
+  box-shadow: 4rpx 4rpx 15rpx 0 #DCDFE6;
   width:200rpx;
   height:70rpx;
   top:80rpx;

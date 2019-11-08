@@ -112,14 +112,22 @@ Page({
     style.loadUI();
   },
 
-  // 打开疯狂账本
-  openCrazyNotes: function(e){
+  // 切换疯狂账本
+  changeCrazyNotes: function(e){
     var crazyId = e.currentTarget.dataset.crazyId;
     var createDt = e.currentTarget.dataset.createDt;
     // 得到疯狂账本Id
     app.globalData.currNote = crazyId;
     app.globalData.currNoteCreateDt = createDt;
     app.globalData.currNoteType = 1; //0.普通账本，1.疯狂账本
+    this.setData({
+      globalData: app.globalData
+    });
+    
+  },
+
+  toNavRecords: function(){
+    console.log(1233111)
     nav.navRecords();
   },
 

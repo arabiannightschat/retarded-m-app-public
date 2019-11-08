@@ -30,7 +30,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow:5rpx 5rpx 10rpx 0rpx #aaaaaa;
+  box-shadow:0rpx 0rpx 15rpx 0rpx #DCDFE6;
 }
 
 .no-shadow {
@@ -85,7 +85,7 @@
 
 .op-models {
   position: absolute;
-  box-shadow: 0rpx 0rpx 15rpx 0 #aaaaaa;
+  box-shadow: 0rpx 0rpx 15rpx 0 #DCDFE6;
   width:200rpx;
   font-size: 25rpx;
   height:70rpx;
@@ -116,4 +116,37 @@
   width: 100%;
   bottom: 0;
   top: 0;
+}
+
+.detail {
+  width: 644rpx;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 40rpx;
+  font-size: 25rpx;
+  top: 40rpx;
+  
+}
+
+.detail .detail-content {
+  padding: 30rpx;
+  line-height: 50rpx;
+}
+
+.detail .detail-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  height: 80rpx;
+  position: absolute;
+  top:30rpx;
+  right: 30rpx;
+  width: 300rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.detail .detail-btn view{
+  width: 140rpx;
+  border-radius: 10rpx;
 }

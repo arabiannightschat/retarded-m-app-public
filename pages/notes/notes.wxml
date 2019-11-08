@@ -2,16 +2,33 @@
   <image class='banner' src='../../images/banners/banner2.jpg'></image>
 </view>
 <view class='notes'>
-  <view class='note' wx:key wx:for="{{notesCrazy}}" data-crazy-id='{{item.crazyId}}' data-create-dt='{{item.createDt}}' bindtap='openCrazyNotes' wx:for-index="index" bindlongpress='modal' data-index='{{index}}'>
+  <!-- 疯狂账本 -->
+  <view class='note' wx:key wx:for="{{notesCrazy}}"  wx:for-index="index">
     <view class='wrap' wx:if='{{item.opShow}}'></view>
     <view class='op-models' style='left: {{index % 3 == 2? "-65rpx" :"50rpx"  }}' wx:if="{{item.opShow}}">
       <view class='op-model' catchtap='del' data-id='{{item.crazyId}}'>删除</view>
-      <!-- <view class='op-model'>其他操作</view> -->
     </view>
-    <image wx:if='{{globalData.currNote == item.crazyId}}' class='rectangle' src='../../images/covers/cover3-active.jpg'></image>
-    <image wx:else class='rectangle' src='../../images/covers/cover3.jpg'></image>
-    <!-- <text class='name'>{{item.name}}<text class='nn'></text></text> -->
+    <view data-crazy-id='{{item.crazyId}}' data-create-dt='{{item.createDt}}' bindtap='changeCrazyNotes' bindlongpress='modal' data-index='{{index}}'>
+      <image wx:if='{{globalData.currNote == item.crazyId}}' class='rectangle' src='../../images/covers/cover3-active.jpg' 
+        style="box-shadow:0rpx 0rpx 15rpx 0rpx {{globalData.UI.secondColor}};"></image>
+      <image wx:else class='rectangle' src='../../images/covers/cover3.jpg'></image>
+    </view>
+    <view class="detail" wx:if='{{globalData.currNote == item.crazyId}}' 
+      style="box-shadow: 0rpx 0rpx 15rpx 0 {{globalData.UI.secondColor}};left: {{index%3==1? '-233rpx' :index%3==2?'-466rpx':'0rpx'}}">
+      <view class="detail-content">
+        <view>当前：<text style="color:{{globalData.UI.color}}">xxx.xx</text> 元</view>
+        <view>每日花销：<text style="color:{{globalData.UI.color}}">{{item.dailyLimit}}</text> 元</view>
+        <view>每月 <text style="color:{{globalData.UI.color}}">{{item.settleDate == null ? '-' :item.settleDate}}</text> 日进行结算</view>
+        <view>记账 <text style="color:{{globalData.UI.color}}">xxx</text> 笔，创建于 <text style="color:{{globalData.UI.color}}">{{item.createDt}}</text></view>
+      </view>
+      <view class="detail-btn">
+        <view bindtap="toNavRecords" style="color:{{globalData.UI.color}};box-shadow: 0rpx 0rpx 15rpx 0 {{globalData.UI.secondColor}}">进入</view>
+        <view style="color:{{globalData.UI.color}};box-shadow: 0rpx 0rpx 15rpx 0 {{globalData.UI.secondColor}}">修改</view>
+      </view>
+    </view>
   </view>
+
+  <!-- 普通账本 -->
   <view class='note' wx:key wx:for="{{notes}}" data-notes-id='{{item.notesId}}' bindtap='openNotes'>
     <view class="rectangle {{globalData.currNote == item.notesId?'active':''}}"></view>
     <text class='name'>{{item.name}}<text class='nn'></text></text>

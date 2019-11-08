@@ -186,7 +186,7 @@ Page({
       curr: curr,
       current:8
     });
-    console.log('initDateList getCurrRecords')
+    // console.log('initDateList getCurrRecords')
     this.getCurrRecords();
   },
 
@@ -263,14 +263,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    app.globalData.isPlus = true;
+    app.globalData.currNav = "records";
     
-    this.load();
-    app.loadUICallback = res => {
-      this.load();
-    }
     // 回调 -> 已经准备好的账本
     app.loadNoteCallback = res => {
-      console.log('callback initDateList')
+      // console.log('callback initDateList')
       this.initDateList(this.data.now);
       this.setData({
         isFirstLoad : false
@@ -279,8 +278,10 @@ Page({
 
     // 回调 -> 登录成功
     app.loadUICallback = res => {
+      this.load();
       this.checkNotes()
     }
+    this.load();
   },
 
   load: function(){
@@ -344,7 +345,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.checkNotes()
     this.setData({
       now: dateUtils.format(new Date())
     });
