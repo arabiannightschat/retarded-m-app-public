@@ -16,14 +16,12 @@
     <view class="detail" wx:if='{{globalData.currNote == item.crazyId}}' 
       style="box-shadow: 0rpx 0rpx 15rpx 0 {{globalData.UI.secondColor}};left: {{index%3==1? '-233rpx' :index%3==2?'-466rpx':'0rpx'}}">
       <view class="detail-content">
-        <view>当前：<text style="color:{{globalData.UI.color}}">xxx.xx</text> 元</view>
-        <view>每日花销：<text style="color:{{globalData.UI.color}}">{{item.dailyLimit}}</text> 元</view>
-        <view>每月 <text style="color:{{globalData.UI.color}}">{{item.settleDate == null ? '-' :item.settleDate}}</text> 日进行结算</view>
-        <view>记账 <text style="color:{{globalData.UI.color}}">xxx</text> 笔，创建于 <text style="color:{{globalData.UI.color}}">{{item.createDt}}</text></view>
+        <view>当前 <text style="color:{{globalData.UI.color}}">xxx.xx</text> 元，记账 <text style="color:{{globalData.UI.color}}">xxx</text> 笔</view>
+        <view>每日花销：<text style="color:{{globalData.UI.color}}">{{item.dailyLimit}}</text> 元，每月 <text style="color:{{globalData.UI.color}}">{{item.settleDate == null ? '-' :item.settleDate}}</text> 日进行结算</view>
       </view>
       <view class="detail-btn">
-        <view bindtap="toNavRecords" style="color:{{globalData.UI.color}};box-shadow: 0rpx 0rpx 15rpx 0 {{globalData.UI.secondColor}}">进入</view>
-        <view style="color:{{globalData.UI.color}};box-shadow: 0rpx 0rpx 15rpx 0 {{globalData.UI.secondColor}}">修改</view>
+        <view bindtap="toNavRecords" style="background:{{globalData.UI.color}};color:{{globalData.UI.frontColor}}">进入</view>
+        <view style="background:{{globalData.UI.color}};color:{{globalData.UI.frontColor}}">修改</view>
       </view>
     </view>
   </view>

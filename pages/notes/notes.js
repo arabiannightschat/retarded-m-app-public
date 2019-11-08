@@ -127,7 +127,6 @@ Page({
   },
 
   toNavRecords: function(){
-    console.log(1233111)
     nav.navRecords();
   },
 

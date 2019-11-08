@@ -31,6 +31,7 @@
   flex-direction: column;
   justify-content: center;
   box-shadow:0rpx 0rpx 15rpx 0rpx #DCDFE6;
+  border-radius: 8rpx;
 }
 
 .no-shadow {
@@ -119,34 +120,33 @@
 }
 
 .detail {
-  width: 644rpx;
+  width: 586rpx;
   position: relative;
   z-index: 1;
-  margin-bottom: 40rpx;
+  margin-bottom: 45rpx;
   font-size: 25rpx;
   top: 40rpx;
-  
+  border-radius: 8rpx;
+  padding: 30rpx;
 }
 
 .detail .detail-content {
-  padding: 30rpx;
+  
   line-height: 50rpx;
+  margin-bottom: 30rpx;
 }
 
 .detail .detail-btn {
   display: flex;
   flex-direction: row;
   justify-content:space-between;
-  height: 80rpx;
-  position: absolute;
-  top:30rpx;
-  right: 30rpx;
-  width: 300rpx;
-  line-height: 80rpx;
+  width: 260rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   text-align: center;
 }
 
 .detail .detail-btn view{
-  width: 140rpx;
+  width: 120rpx;
   border-radius: 10rpx;
 }
