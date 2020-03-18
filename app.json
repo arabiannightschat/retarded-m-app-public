@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/records/records",
     "pages/export/export",
     "pages/new-record/new-record",
@@ -12,10 +13,7 @@
     "pages/mine/feedback/feedback"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#86d2f9",
-    "navigationBarTitleText": "阿账 - 幸福记账",
-    "navigationBarTextStyle": "black"
+    "navigationStyle": "custom"
   },
   "sitemapLocation": "sitemap.json"
 }
