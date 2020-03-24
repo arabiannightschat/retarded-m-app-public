@@ -32,17 +32,27 @@
     </view>
   </view>
   <!-- 账目 -->  
-  <view class="records">
+  <view class="records-area">
     <view class="single-day">
       <view class="title">
         <view class="align-left">3月22日 星期日</view>
         <view class="align-right">支出：￥30.20</view>
         <view class="clear-both"></view>
       </view>
-      <view class="record">
-        sadasdasd
+      <view class="daily-records">
+        <view class="record">
+          <iconfont name="food-2" size="40" class="align-left" />
+          <view class="record-title align-left">肯德基</view>
+          <view class="record-tag align-left">new</view>
+          <view class="record-money align-right">￥28.00</view>
+          <view class="clear-both"></view>
+        </view>
       </view>
     </view>
+  </view>
+  <!-- 记账入口 -->
+  <view class="new-records-icon">
+    <iconfont name="gona" size="100" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
   </view>
 </view>
 

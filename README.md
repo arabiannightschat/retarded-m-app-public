@@ -1,8 +1,31 @@
 # retarded-m-app
-阿帐 - 微信小程序
 
-采用了一种可以实时掌控月花销进度的方式记账, 你可以规定自己每天的花销, 然后按照计划去花钱, 结余的钱转结到第二天, 这是一件很幸福的事
+阿帐-记账帮手 - 微信小程序
 
-技术上采用了自定义的底部标题栏, 可滑动的时间选择条等, 希望可以实现手拖动块移动的demo
+### ---- 引入多色图标步骤 ---------------
 
-欢迎前来体验
+1. npm install mini-program-iconfont-cli --save-dev 安装插件
+
+2. npx iconfont-init 初始化配置文件
+
+修改："symbol_url": "http://at.alicdn.com/t/font_1710408_jcm2hp79rc.js",
+
+3. npx iconfont-wechat 生成小程序文件，复制到小程序目录下
+
+4. 在小程序 app.json 中引入
+
+```
+{
+    "usingComponents": {
+        "iconfont": "/iconfont/iconfont"
+    }
+}
+```
+
+5. 引用
+
+```
+<iconfont name="alipay" />
+```
+
+6. 变更时，修改 symbol_url 再执行 npx iconfont-wechat 即可

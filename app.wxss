@@ -49,13 +49,13 @@
 }
 
 @font-face {
-  font-family: 'iconfont';  /* project id 882042 */
-  src: url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.eot');
-  src: url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.woff') format('woff'),
-  url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_882042_39dd5v4vt6w.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 1710408 */
+  src: url('//at.alicdn.com/t/font_1710408_jcm2hp79rc.eot');
+  src: url('//at.alicdn.com/t/font_1710408_jcm2hp79rc.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1710408_jcm2hp79rc.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1710408_jcm2hp79rc.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1710408_jcm2hp79rc.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1710408_jcm2hp79rc.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -65,174 +65,38 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-music:before {
-  content: "\e642";
-}
-
-.icon-song:before {
-  content: "\e609";
-}
-
-.icon-drink:before {
-  content: "\e61e";
-}
-
-.icon-set:before {
-  content: "\e606";
-}
-
-.icon-minus-thin:before {
-  content: "\e643";
-}
-
-.icon-idea:before {
-  content: "\e6d3";
-}
-
-.icon-lunch:before {
-  content: "\e6e8";
-}
-
-.icon-delete:before {
-  content: "\e68d";
-}
-
-.icon-rmb:before {
-  content: "\e66b";
-}
-
-.icon-notes:before {
-  content: "\e6b0";
-}
-
-.icon-backspace:before {
-  content: "\e69f";
-}
-
-.icon-filter:before {
-  content: "\e611";
-}
-
-.icon-phone:before {
+.icon-food-3:before {
   content: "\e632";
 }
 
-.icon-gift:before {
-  content: "\e62d";
+.icon-food-2:before {
+  content: "\e635";
 }
 
-.icon-supermarket:before {
-  content: "\e631";
-}
-
-.icon-costume:before {
-  content: "\e666";
-}
-
-.icon-tuikuan:before {
-  content: "\e614";
-}
-
-.icon-dinner:before {
-  content: "\e677";
-}
-
-.icon-relax:before {
-  content: "\e679";
-}
-
-.icon-wine:before {
-  content: "\e617";
-}
-
-.icon-shopping:before {
-  content: "\e603";
-}
-
-.icon-export:before {
-  content: "\e6de";
-}
-
-.icon-sports:before {
+.icon-wear:before {
   content: "\e612";
 }
 
-.icon-truck:before {
-  content: "\e61d";
+.icon-air:before {
+  content: "\e63f";
 }
 
-.icon-records:before {
-  content: "\e662";
+.icon-food:before {
+  content: "\e68d";
 }
 
-.icon-traffic:before {
-  content: "\e621";
-}
-
-.icon-meizhuang:before {
-  content: "\e605";
-}
-
-.icon-hongbao:before {
-  content: "\e619";
-}
-
-.icon-down:before {
-  content: "\e696";
-}
-
-.icon-left:before {
-  content: "\e697";
-}
-
-.icon-up:before {
-  content: "\e698";
-}
-
-.icon-more:before {
-  content: "\e600";
-}
-
-.icon-friut:before {
-  content: "\e60b";
-}
-
-.icon-foods:before {
-  content: "\e668";
-}
-
-.icon-breakfast:before {
-  content: "\e66e";
-}
-
-.icon-mine:before {
-  content: "\e604";
-}
-
-.icon-shoe:before {
+.icon-pretty:before {
   content: "\e608";
 }
 
-.icon-start:before {
-  content: "\e661";
+.icon-house:before {
+  content: "\e600";
 }
 
-.icon-other:before {
-  content: "\e761";
+.icon-backup:before {
+  content: "\e6dd";
 }
 
-.icon-dailyuse:before {
-  content: "\e60e";
-}
-
-.icon-bonus:before {
-  content: "\e601";
-}
-
-.icon-pay:before {
-  content: "\e68f";
-}
-
-.icon-plus-thin:before {
-  content: "\e807";
+.icon-gona:before {
+  content: "\e688";
 }

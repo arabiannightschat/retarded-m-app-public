@@ -15,5 +15,8 @@
   "window": {
     "navigationStyle": "custom"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "iconfont": "/iconfont/iconfont"
+  }
 }

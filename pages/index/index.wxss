@@ -75,27 +75,55 @@
   height: 200px;
 }
 
-.records {
+.records-area {
   margin: 50rpx 40rpx 40rpx 40rpx;
 }
 
-.records .title {
+.records-area .title {
   letter-spacing: 7rpx;
   color: #666
 }
 
-.records .align-left {
+.align-left {
   float: left;
 }
 
-.records .align-right {
+.align-right {
   float: right;
 }
 
-.records .clear-both {
+.clear-both {
   clear: both;
 }
 
 .record {
-  padding: 30rpx 0;
+  padding: 35rpx 0;
+  font-size: 30rpx;
+  border-bottom: 1rpx #efefef solid;
+}
+
+.record .record-title {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.record .record-tag {
+  background: #ffe2e2;
+  color: #fd6365;
+  border: 1rpx #ff8284 solid;
+  border-radius: 10rpx;
+  padding: 5rpx;
+  font-size: 20rpx;
+}
+
+.record .record-money {
+  letter-spacing: 7rpx;
+}
+
+.new-records-icon {
+  position: fixed;
+  right: 200rpx;
+  bottom: 80rpx;
+  box-shadow: 4px 4px 5px 0px #efefef;
+  padding: 10rpx;
 }
