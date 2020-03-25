@@ -6,7 +6,7 @@ App({
     wx.login({
       success: res => {
         wx.request({
-          url: that.globalData.baseUrl + "api/login/wxLogin",
+          url: that.globalData.baseUrl + "api/sys/login/wxLogin",
           data: {
             code: res.code,
             oldSessionId: wx.getStorageSync('sessionId')
@@ -15,6 +15,7 @@ App({
           success: data => {
             //服务器返回的sessionId存入缓存,在以后的每次请求中都发送这个标识
             wx.setStorageSync('sessionId', data.data.sessionId);
+            wx.setStorageSync('chargeDayCount', data.data.chargeDayCount);
             // 登录成功
             console.log("登录成功！")
             if (this.loginCallback) {

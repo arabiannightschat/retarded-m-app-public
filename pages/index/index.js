@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    statusBarHeight: 0,
-    lineChart: null
+    statusBarHeight: 0, // 沉浸栏高度
+    lineChart: null, // 图表对象
+    chargeDayCount: wx.getStorageSync('chargeDayCount')
   },
 
   /**
@@ -24,6 +25,7 @@ Page({
     });
     // 绘制图表
     this.createLineCharts();
+    
   },
 
   /**
