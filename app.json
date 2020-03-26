@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/setting/setting",
     "pages/records/records",
     "pages/export/export",
     "pages/new-record/new-record",

@@ -10,16 +10,16 @@ Page({
     lineChart: null, // 图表对象
     chargeDayCount: wx.getStorageSync('chargeDayCount'), // 记账天数
     simpleData: {
-      balance:'-', // 账本余额
-      dayToNextMonth: '-', //距离月末天数
-      year: '-', // 当前年
-      month: '-' // 当前月
+      balance:'', // 账本余额
+      dayToNextMonth: '', //距离月末天数
+      year: '', // 当前年
+      month: '' // 当前月
     },
     chartsData: {
-      categories: [], // 日期
-      daySpending: [], // 日花销
-      dayBudget: [], // 日预算
-      dynamicDayBudget: [] //日动态预算
+      categories: [0], // 日期
+      daySpending: [0], // 日花销
+      dayBudget: [0], // 日预算
+      dynamicDayBudget: [0] //日动态预算
     }
 
   },
@@ -37,10 +37,15 @@ Page({
         })
       },
     });
-    this.getRecentData();
-    // 绘制图表
-    this.createLineCharts();
-    
+    app.loginCallback = res => {
+      // 登录回调后获取最近数据
+      this.getRecentData(); 
+    }
+
+    this.getRentDataCallback = res => {
+      // 数据刷新后绘制图表，否则图表会陷入死循环
+      this.createLineCharts();
+    }
   },
 
   /**
@@ -116,24 +121,27 @@ Page({
       },
       method: "get",
       success: data => {
-        if(data.data == null){
+        var d = data.data.data;
+        if (d == null){
           console.log("检测到没有账本，跳转到基本设置页！")
         } else {
-          var datas = data.data;
           this.setData({
             simpleData: {
-              balance: datas.balance, // 账本余额
-              dayToNextMonth: datas.dayToNextMonth, //距离月末天数
-              year: datas.year, // 当前年
-              month: datas.month // 当前月
+              balance: d.balance, // 账本余额
+              dayToNextMonth: d.dayToNextMonth, //距离月末天数
+              year: d.year, // 当前年
+              month: d.month // 当前月
             },
             chartsData: {
-              categories: datas.categories, // 日期
-              daySpending: datas.daySpending, // 日花销
-              dayBudget: datas.dayBudget, // 日预算
-              dynamicDayBudget: datas.dynamicDayBudget //日动态预算
+              categories: d.categories, // 日期
+              daySpending: d.daySpending, // 日花销
+              dayBudget: d.dayBudget, // 日预算
+              dynamicDayBudget: d.dynamicDayBudget //日动态预算
             }
           })
+          if (this.getRentDataCallback) {
+            this.getRentDataCallback()
+          }
         }
       }
     })
@@ -191,5 +199,6 @@ Page({
         lineStyle: 'curve'
       }
     });
+    console.log("-- 绘制图表完成")
   }
 })

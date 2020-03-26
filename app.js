@@ -13,9 +13,10 @@ App({
           },
           method: "get",
           success: data => {
+            var d = data.data.data;
             //服务器返回的sessionId存入缓存,在以后的每次请求中都发送这个标识
-            wx.setStorageSync('sessionId', data.data.sessionId);
-            wx.setStorageSync('chargeDayCount', data.data.chargeDayCount);
+            wx.setStorageSync('sessionId', d.sessionId);
+            wx.setStorageSync('chargeDayCount', d.chargeDayCount);
             // 登录成功
             console.log("登录成功！")
             if (this.loginCallback) {
