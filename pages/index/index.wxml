@@ -16,13 +16,13 @@
       <view class="card-content">
         <!-- 当前日期展示 -->
         <view class="now-date">
-          <view>2020年</view>
-          <view class="large-font-2">3月</view>
+          <view>{{simpleData.year}}年</view>
+          <view class="large-font-2">{{simpleData.month}}月</view>
         </view>
         <!-- 卡片数据展示 -->
         <view class="card-data">
-          <view class="gray-color">距离结算还有<text class="main-color"> 8 </text>天，预算余额</view>
-          <view class="main-color">￥ <text class="large-font-2">388.25</text></view>
+          <view class="gray-color">距离结算还有<text class="main-color"> {{simpleData.dayToNextMonth}} </text>天，预算余额</view>
+          <view class="main-color">￥ <text class="large-font-2">{{simpleData.balance}}</text></view>
         </view>
         <!-- 图表 -->
         <view class="container">

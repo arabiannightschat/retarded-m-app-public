@@ -1,4 +1,5 @@
 // pages/index/index.js
+var app = getApp();
 Page({
 
   /**
@@ -7,7 +8,20 @@ Page({
   data: {
     statusBarHeight: 0, // 沉浸栏高度
     lineChart: null, // 图表对象
-    chargeDayCount: wx.getStorageSync('chargeDayCount')
+    chargeDayCount: wx.getStorageSync('chargeDayCount'), // 记账天数
+    simpleData: {
+      balance:'-', // 账本余额
+      dayToNextMonth: '-', //距离月末天数
+      year: '-', // 当前年
+      month: '-' // 当前月
+    },
+    chartsData: {
+      categories: [], // 日期
+      daySpending: [], // 日花销
+      dayBudget: [], // 日预算
+      dynamicDayBudget: [] //日动态预算
+    }
+
   },
 
   /**
@@ -23,6 +37,7 @@ Page({
         })
       },
     });
+    this.getRecentData();
     // 绘制图表
     this.createLineCharts();
     
@@ -90,17 +105,38 @@ Page({
   },
 
   /**
-   * 获取图表数据方法
+   * 获取最近数据
    */
-  getChartsData: function () {
-    var categories = ['3-18', '3-19', '3-20', '3-21', '3-22', '3-23', '3-24',];
-    var data = [23, 40, 102, 13, 35, null, null];
-    var budget = [48.5, 48.5, 48.5, 48.5, 48.5, 48.5, 48.5];
-    return {
-      categories: categories,
-      data: data,
-      budget :budget
-    }
+  getRecentData: function () {
+    console.log("-- 准备请求数据：",wx.getStorageSync('sessionId'))
+    wx.request({
+      url: app.globalData.baseUrl + "api/notes/dayStatistics/getRecentData",
+      header: {
+        sessionId: wx.getStorageSync('sessionId')
+      },
+      method: "get",
+      success: data => {
+        if(data.data == null){
+          console.log("检测到没有账本，跳转到基本设置页！")
+        } else {
+          var datas = data.data;
+          this.setData({
+            simpleData: {
+              balance: datas.balance, // 账本余额
+              dayToNextMonth: datas.dayToNextMonth, //距离月末天数
+              year: datas.year, // 当前年
+              month: datas.month // 当前月
+            },
+            chartsData: {
+              categories: datas.categories, // 日期
+              daySpending: datas.daySpending, // 日花销
+              dayBudget: datas.dayBudget, // 日预算
+              dynamicDayBudget: datas.dynamicDayBudget //日动态预算
+            }
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -116,22 +152,21 @@ Page({
       console.error('getSystemInfoSync failed!');
     }
 
-    var chartsData = this.getChartsData();
     this.data.lineChart = new wxCharts({
       canvasId: 'lineCanvas',
       type: 'line',
-      categories: chartsData.categories,
+      categories: this.data.chartsData.categories,
       animation: true,
       legend: true,
       series: [{
         name: '日实际消费',
-        data: chartsData.data,
+        data: this.data.chartsData.daySpending,
         format: function (val, name) {
           return val.toFixed(2);
         }
       }, {
         name: '日预算金额',
-          data: chartsData.budget,
+          data: this.data.chartsData.dayBudget,
         format: function (val, name) {
           return val.toFixed(2);
         }
