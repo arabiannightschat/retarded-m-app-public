@@ -38,6 +38,13 @@
   padding: 50rpx;
 }
 
+.blank-card {
+  height: 500rpx;
+  font-size: 70rpx;
+  line-height: 500rpx;
+  text-align: center;
+}
+
 .gray-color{
   color: #cccccc;
 }

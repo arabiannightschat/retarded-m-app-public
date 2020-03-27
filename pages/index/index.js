@@ -9,6 +9,7 @@ Page({
     statusBarHeight: 0, // 沉浸栏高度
     lineChart: null, // 图表对象
     chargeDayCount: wx.getStorageSync('chargeDayCount'), // 记账天数
+    isExistNote: false, // 用户是否拥有账本
     simpleData: {
       balance:'', // 账本余额
       dayToNextMonth: '', //距离月末天数
@@ -28,6 +29,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var isGotData = false;
+    console.log("-- 主页面 index - onLoad");
     var that = this
     // 获取沉浸栏高度
     wx.getSystemInfo({
@@ -39,7 +42,12 @@ Page({
     });
     app.loginCallback = res => {
       // 登录回调后获取最近数据
+      console.log("-- 登录回调事件触发")
       this.getRecentData(); 
+    }
+    if (app.globalData.isLoginCompleted) {
+      console.log("-- 页面加载时已经完成了登录")
+      this.getRecentData();
     }
 
     this.getRentDataCallback = res => {
@@ -113,7 +121,7 @@ Page({
    * 获取最近数据
    */
   getRecentData: function () {
-    console.log("-- 准备请求数据：",wx.getStorageSync('sessionId'))
+    console.log("-- 准备请求最近数据 ",wx.getStorageSync('sessionId'))
     wx.request({
       url: app.globalData.baseUrl + "api/notes/dayStatistics/getRecentData",
       header: {
@@ -123,9 +131,13 @@ Page({
       success: data => {
         var d = data.data.data;
         if (d == null){
-          console.log("检测到没有账本，跳转到基本设置页！")
+          console.log("-- 检测到没有账本，跳转到基本设置页！")
+          wx.navigateTo({
+            url: '../setting/setting'
+          });
         } else {
           this.setData({
+            isExistNote: true,
             simpleData: {
               balance: d.balance, // 账本余额
               dayToNextMonth: d.dayToNextMonth, //距离月末天数

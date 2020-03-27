@@ -1,2 +1,6 @@
 <!--pages/setting/setting.wxml-->
-<text>pages/setting/setting.wxml</text>
+<view class="setting">
+  <view class="top">
+    <image class="background" src="../../images/background/background-setting.jpg"></image>
+  </view>
+</view>

@@ -3,7 +3,7 @@
   <!-- 顶部 -->
   <view class="top">
     <!-- 背景图 -->
-    <image src="../../images/index/background-top.jpg" class="background-top"/>
+    <image src="../../images/background/background-index-top.jpg" class="background-top"/>
     <!-- 沉浸栏 -->
     <view style="width:100%;height:{{statusBarHeight}}px"></view>
     <!-- 标题栏 -->
@@ -13,7 +13,7 @@
     </view>
     <!-- 卡片 -->
     <view class="card">
-      <view class="card-content">
+      <view class="card-content" wx:if="{{isExistNote}}">
         <!-- 当前日期展示 -->
         <view class="now-date">
           <view>{{simpleData.year}}年</view>
@@ -29,6 +29,7 @@
           <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
         </view>
       </view>
+      <view wx:else class="card-content blank-card">暂无默认账本</view>
     </view>
   </view>
   <!-- 账目 -->  
