@@ -25,9 +25,10 @@
           <view class="main-color">￥ <text class="large-font-2">{{simpleData.balance}}</text></view>
         </view>
         <!-- 图表 -->
-        <view class="container">
+        <view class="container" wx:if="{{isExistRecords}}">
           <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
         </view>
+        <view class="blank-canvas" wx:else>暂无记账数据</view>
       </view>
       <view wx:else class="card-content blank-card">暂无默认账本</view>
     </view>
@@ -52,7 +53,7 @@
     </view>
   </view>
   <!-- 记账入口 -->
-  <view class="new-records-icon">
+  <view class="new-records-icon" bindtap="startRecord">
     <iconfont name="gona" size="100" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
   </view>
 </view>

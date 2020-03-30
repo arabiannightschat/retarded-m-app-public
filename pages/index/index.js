@@ -10,6 +10,7 @@ Page({
     lineChart: null, // 图表对象
     chargeDayCount: wx.getStorageSync('chargeDayCount'), // 记账天数
     isExistNote: false, // 用户是否拥有账本
+    isExistRecords: false, // 账本是否拥有近期数据
     simpleData: {
       balance:'', // 账本余额
       dayToNextMonth: '', //距离月末天数
@@ -45,15 +46,6 @@ Page({
       console.log("-- 登录回调事件触发")
       this.getRecentData(); 
     }
-    if (app.globalData.isLoginCompleted) {
-      console.log("-- 页面加载时已经完成了登录")
-      this.getRecentData();
-    }
-
-    this.getRentDataCallback = res => {
-      // 数据刷新后绘制图表，否则图表会陷入死循环
-      this.createLineCharts();
-    }
   },
 
   /**
@@ -67,7 +59,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log("-- 主页面 index - onShow");
+    if (app.globalData.isLoginCompleted) {
+      console.log("-- 完成登录后每次打开页面刷新")
+      this.getRecentData();
+    }
   },
 
   /**
@@ -105,6 +101,12 @@ Page({
 
   },
 
+  startRecord: function() {
+    wx.navigateTo({
+      url: '../new-record/new-record',
+    })
+  },
+
   /**
    * 图表详细数据展示
    */
@@ -136,10 +138,11 @@ Page({
             url: '../setting/setting'
           });
         } else {
+          console.log("-- 请求成功，数据正确！", d)
           this.setData({
             isExistNote: true,
             simpleData: {
-              balance: d.balance, // 账本余额
+              balance: d.balance.toFixed(2), // 账本余额
               dayToNextMonth: d.dayToNextMonth, //距离月末天数
               year: d.year, // 当前年
               month: d.month // 当前月
@@ -151,8 +154,27 @@ Page({
               dynamicDayBudget: d.dynamicDayBudget //日动态预算
             }
           })
-          if (this.getRentDataCallback) {
-            this.getRentDataCallback()
+          if (this.data.chartsData.categories.length > 0){
+            console.log("-- 图表数据正确，将绘制图表")
+            this.setData({
+              isExistRecords: true
+            })
+            // 数据刷新后绘制图表，否则图表会陷入死循环
+            this.createLineCharts();
+          } else {
+            console.log("-- 近期没有记账记录，不刷新图表")
+            // 测试代码 -- start --
+            this.setData({
+              chartsData: {
+                categories: ['3.25', '3.26', '3.27', '3.28', '3.29', '3.30', '3.31'], // 日期
+                daySpending: [40, 32, 65, 110, 15], // 日花销
+                dayBudget: [80, 80, 80, 80, 80], // 日预算
+                dynamicDayBudget: [92, 89, 85, 90, 95] //日动态预算
+              },
+              isExistRecords: true
+            })
+            this.createLineCharts();
+            // 测试代码 -- end --
           }
         }
       }
@@ -187,6 +209,12 @@ Page({
       }, {
         name: '日预算金额',
           data: this.data.chartsData.dayBudget,
+        format: function (val, name) {
+          return val.toFixed(2);
+        }
+      }, {
+        name: '动态预算金额',
+          data: this.data.chartsData.dynamicDayBudget,
         format: function (val, name) {
           return val.toFixed(2);
         }

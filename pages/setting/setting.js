@@ -1,4 +1,5 @@
 // pages/setting/setting.js
+var app = getApp();
 Page({
 
   /**
@@ -6,6 +7,45 @@ Page({
    */
   data: {
     monthBudget:'', // 月预算
+  },
+
+  createNote: function (){
+    var that = this;
+    // 校验数据
+    if (this.data.monthBudget == 0 || this.data.monthBudget == '') {
+      wx.showToast({
+        title: '您还没有设定月预算呀',
+        icon: 'none',
+        duration: 400
+      })
+      return;
+    }
+    wx.showLoading({
+      title: '正在创建',
+    })
+    wx.request({
+      url: app.globalData.baseUrl + 'api/notes/note/createNote',
+      header: {
+        sessionId: wx.getStorageSync('sessionId'),
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        monthBudget: that.data.monthBudget
+      },
+      method: "post",
+      success: data => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '已创建',
+          icon: 'success',
+          duration: 400,
+          mask: true
+        });
+        setTimeout(function () {
+          wx.navigateBack();
+        }, 400)
+      }
+    })
   },
 
   /**

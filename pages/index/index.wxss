@@ -75,8 +75,16 @@
   margin-top: 50rpx;
   height: 100%;
   position: relative;
-  left: -20rpx;
+  left: -15rpx;
 }
+
+.blank-canvas {
+  height: 200px;
+  font-size: 70rpx;
+  line-height: 200px;
+  text-align: center;
+}
+
 .canvas {
   width: 100%;
   height: 200px;
@@ -133,4 +141,12 @@
   bottom: 80rpx;
   box-shadow: 4px 4px 5px 0px #efefef;
   padding: 10rpx;
+}
+
+.e {
+  color: #90ed7d;
+  color: #f15c80;
+  color: #8085e9;
+
+  /* z, '#f15c80', '#8085e9' */
 }
