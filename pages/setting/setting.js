@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    monthBudget:'', // 月预算
   },
 
   /**
@@ -62,5 +62,28 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  // 月预算不能超过10万,非法输入被禁止
+  limitInputs: function (e) {
+    var v1 = e.detail.value;
+    if (v1 >= 100000) {
+      v1 /= 10;
+    }
+    this.setData({
+      monthBudget: v1
+    })
+  },
+  // 格式化为两位小数
+  limitInputsBlur: function (e) {
+    var v1 = e.detail.value;
+    if (v1 == '') {
+      v1 = '';
+    } else {
+      var v1 = parseFloat(v1).toFixed(2);
+    }
+    this.setData({
+      monthBudget: v1
+    })
+  },
 })

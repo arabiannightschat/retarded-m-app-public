@@ -1,6 +1,15 @@
 <!--pages/setting/setting.wxml-->
 <view class="setting">
   <view class="top">
-    <image class="background" src="../../images/background/background-setting.jpg"></image>
+    <image class="background" src="../../images/setting/icon-setting.png"></image>
+  </view>
+  <view class="section">
+    <view class="info">进行您的初始化设定</view>
+    <view class="title">设定月预算</view>
+    <input class='input' placeholder-style='color:#f8f8f8' value='{{monthBudget}}' bindinput='limitInputs' bindblur='limitInputsBlur' 
+      placeholder='1000.00' maxlength='8' type="number" focus='true' />
+  </view>
+  <view class="button-wrap">
+    <view class="btn">开始使用</view>
   </view>
 </view>

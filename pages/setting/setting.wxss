@@ -1,1 +1,46 @@
 /* pages/setting/setting.wxss */
+.top .background {
+  margin: 150rpx auto 0 auto;
+  width: 287rpx;
+  height: 292rpx;
+  display: block;
+}
+
+.section {
+  padding: 30rpx 120rpx;
+  font-size: 35rpx;
+  text-align: center;
+}
+
+.info {
+  font-size: 35rpx;
+  color: #bcbcbc;
+}
+
+.title {
+  margin-top: 35rpx;
+}
+
+.input {
+  margin-top: 25rpx;
+  height: 100rpx;
+  color: #fd6365;
+  font-size: 100rpx;
+  border-bottom: 1rpx #f8f8f8 solid;
+  padding: 10rpx 0;
+}
+
+.btn {
+  margin: 50rpx auto;
+  height: 100rpx;
+  width: 400rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background-image: linear-gradient(30deg, #fd6365, #fc9e7c);
+  color: white;
+}
+
+.btn:active {
+  background-image: linear-gradient(30deg, #fc424e, #fc7553);
+}

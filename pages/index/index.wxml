@@ -3,7 +3,7 @@
   <!-- 顶部 -->
   <view class="top">
     <!-- 背景图 -->
-    <image src="../../images/background/background-index-top.jpg" class="background-top"/>
+    <image src="../../images/index/background-top.jpg" class="background-top"/>
     <!-- 沉浸栏 -->
     <view style="width:100%;height:{{statusBarHeight}}px"></view>
     <!-- 标题栏 -->
