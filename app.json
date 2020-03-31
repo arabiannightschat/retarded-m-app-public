@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/accounts/add-account",
     "pages/index/index",
     "pages/setting/setting",
     "pages/records/records",

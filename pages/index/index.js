@@ -103,7 +103,7 @@ Page({
 
   startRecord: function() {
     wx.navigateTo({
-      url: '../new-record/new-record',
+      url: '../accounts/add-account',
     })
   },
 
@@ -164,6 +164,7 @@ Page({
           } else {
             console.log("-- 近期没有记账记录，不刷新图表")
             // 测试代码 -- start --
+            console.log("-- 使用测试数据，撑起图表看效果")
             this.setData({
               chartsData: {
                 categories: ['3.25', '3.26', '3.27', '3.28', '3.29', '3.30', '3.31'], // 日期

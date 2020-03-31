@@ -1,0 +1,17 @@
+<!--pages/accounts/add-account.wxml-->
+<view class="index">
+  <!-- 顶部 -->
+  <view class="top">
+    <!-- 渐变栏 -->
+    <view class="gradient-top"></view>
+    <!-- 沉浸栏 -->
+    <view style="width:100%;height:{{statusBarHeight}}px"></view>
+    <view class="title">记一笔</view>
+    <view class="card">
+      <view class="card-content">
+        <view class="tab">常用</view>
+      </view>
+    </view>
+
+  </view>
+</view>

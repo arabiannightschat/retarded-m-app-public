@@ -142,11 +142,3 @@
   box-shadow: 4px 4px 5px 0px #efefef;
   padding: 10rpx;
 }
-
-.e {
-  color: #90ed7d;
-  color: #f15c80;
-  color: #8085e9;
-
-  /* z, '#f15c80', '#8085e9' */
-}
