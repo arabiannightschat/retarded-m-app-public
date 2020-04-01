@@ -29,7 +29,7 @@
   width: 670rpx;
   margin: 40rpx auto;
   background: white;
-  border-radius: 10rpx; 
+  border-radius: 20rpx; 
   box-shadow: 0px 10px 5px 0px #eeeeee;
   position: relative
 }

@@ -6,12 +6,78 @@
     <view class="gradient-top"></view>
     <!-- 沉浸栏 -->
     <view style="width:100%;height:{{statusBarHeight}}px"></view>
-    <view class="title">记一笔</view>
+    <!-- 标题栏 -->
+    <view class="title-wrap">
+      <iconfont bindtap="back" class="icon" name="back" size="30" color="#fff"/>
+      <view class="text">记一笔</view>
+    </view>
     <view class="card">
       <view class="card-content">
         <view class="tab">常用</view>
+        <view class="types">
+          <view class='type' bindtap='pickType'>
+            <view class="icon-wrap active">
+              <iconfont class="icon" name="food-2" size="60"/>
+            </view>
+            <text class='text'>吃饭</text>
+          </view>
+
+          <!-- test -->
+          <view class='type' bindtap='pickType'>
+            <view class="icon-wrap">
+              <iconfont class="icon" name="pretty" size="60"/>
+            </view>
+            <text class='text'>美妆</text>
+          </view>
+
+          <view class='type' bindtap='pickType'>
+            <view class="icon-wrap">
+              <iconfont class="icon" name="pretty" size="60"/>
+            </view>
+            <text class='text'>美妆</text>
+          </view>
+
+          <view class='type' bindtap='pickType'>
+            <view class="icon-wrap">
+              <iconfont class="icon" name="pretty" size="60"/>
+            </view>
+            <text class='text'>美妆</text>
+          </view>
+
+          <view class='type' bindtap='pickType'>
+            <view class="icon-wrap">
+              <iconfont class="icon" name="pretty" size="60"/>
+            </view>
+            <text class='text'>美妆</text>
+          </view>
+
+          <view class='type' bindtap='pickType'>
+            <view class="icon-wrap">
+              <iconfont class="icon" name="pretty" size="60"/>
+            </view>
+            <text class='text'>美妆</text>
+          </view>
+
+          <view class='type' bindtap='pickType'>
+            <view class="icon-wrap">
+              <iconfont class="icon" name="pretty" size="60"/>
+            </view>
+            <text class='text'>美妆</text>
+          </view>
+
+          <view class='type' bindtap='pickType'>
+            <view class="icon-wrap">
+              <iconfont class="icon" name="pretty" size="60"/>
+            </view>
+            <text class='text'>美妆</text>
+          </view>
+          <!-- test -->
+
+        </view>
       </view>
     </view>
 
   </view>
 </view>
+
+<!-- back | food-3 | food-2 | wear | air | food | pretty | house | backup | gona -->

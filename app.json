@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/accounts/add-account",
     "pages/index/index",
+    "pages/accounts/add-account",
     "pages/setting/setting",
     "pages/records/records",
     "pages/export/export",

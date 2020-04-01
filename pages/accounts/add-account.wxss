@@ -9,14 +9,33 @@
   height: 300rpx;
   z-index: -10;
   position: fixed;
-  background-image: linear-gradient(30deg, #fd6365, #fc9e7c);
+  background-image: linear-gradient(30deg, #fc9e7c, #fd6365);
+}
+
+.title-wrap {
+  text-align: center;
+  color: #fff;
+  font-size: 35rpx;
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.title-wrap .icon {
+  margin-left: 20rpx;
+  position: relative;
+  top: -11rpx;
+  padding: 20rpx;
+}
+
+.title-wrap .text {
+  margin-left: 10rpx;
 }
 
 .card {
   width: 670rpx;
-  margin: 110rpx auto;
+  margin: 25rpx auto;
   background: white;
-  border-radius: 10rpx; 
+  border-radius: 20rpx; 
   box-shadow: 0px 10px 5px 0px #eeeeee;
 }
 
@@ -27,4 +46,38 @@
 .card .tab {
   color: #bcbcbc;
   font-size: 35rpx;
+}
+
+.types {
+  margin: 25rpx 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+}
+
+.type .icon-wrap {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.type .active {
+  border-radius: 100rpx;
+  border: 5rpx #fc976b solid;
+}
+
+.type .icon {
+  position: relative;
+  top: 20rpx;
+  left: 20rpx;
+}
+
+.type .text {
+  text-align: center;
+  font-size: 25rpx;
+  margin-top: 10rpx;
 }
