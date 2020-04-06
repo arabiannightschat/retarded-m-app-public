@@ -11,12 +11,40 @@
       <iconfont bindtap="back" class="icon" name="back" size="30" color="#fff"/>
       <view class="text">记一笔</view>
     </view>
+    <!-- 卡片 -->
     <view class="card">
       <view class="card-content">
         <view class="tab">常用</view>
         <view class="types">
           <view class='type' bindtap='pickType'>
+            <view class="icon-wrap">
+              <iconfont class="icon" name="food-2" size="60"/>
+            </view>
+            <text class='text'>吃饭</text>
+          </view>
+
+          <!-- test -->
+          <view class='type' bindtap='pickType'>
             <view class="icon-wrap active">
+              <iconfont class="icon" name="pretty" size="60"/>
+            </view>
+            <text class='text'>美妆</text>
+          </view>
+          <!-- test -->
+        </view>
+      <!-- 卡片内容结束 -->
+      </view>
+    <!-- 卡片结束 -->
+    </view>
+  <!-- 顶部结束 -->
+  </view>
+
+  <!-- 类型选择 -->
+  <view class="middle">
+    <view class="middle-wrap">
+      <view class="types">
+          <view class='type' bindtap='pickType'>
+            <view class="icon-wrap">
               <iconfont class="icon" name="food-2" size="60"/>
             </view>
             <text class='text'>吃饭</text>
@@ -25,58 +53,50 @@
           <!-- test -->
           <view class='type' bindtap='pickType'>
             <view class="icon-wrap">
-              <iconfont class="icon" name="pretty" size="60"/>
+              <iconfont class="icon" name="food-2" size="60"/>
             </view>
-            <text class='text'>美妆</text>
-          </view>
-
-          <view class='type' bindtap='pickType'>
+            <text class='text'>吃饭</text>
+          </view><view class='type' bindtap='pickType'>
             <view class="icon-wrap">
-              <iconfont class="icon" name="pretty" size="60"/>
+              <iconfont class="icon" name="food-2" size="60"/>
             </view>
-            <text class='text'>美妆</text>
-          </view>
-
-          <view class='type' bindtap='pickType'>
-            <view class="icon-wrap">
-              <iconfont class="icon" name="pretty" size="60"/>
-            </view>
-            <text class='text'>美妆</text>
-          </view>
-
-          <view class='type' bindtap='pickType'>
-            <view class="icon-wrap">
-              <iconfont class="icon" name="pretty" size="60"/>
-            </view>
-            <text class='text'>美妆</text>
-          </view>
-
-          <view class='type' bindtap='pickType'>
-            <view class="icon-wrap">
-              <iconfont class="icon" name="pretty" size="60"/>
-            </view>
-            <text class='text'>美妆</text>
-          </view>
-
-          <view class='type' bindtap='pickType'>
-            <view class="icon-wrap">
-              <iconfont class="icon" name="pretty" size="60"/>
-            </view>
-            <text class='text'>美妆</text>
-          </view>
-
-          <view class='type' bindtap='pickType'>
-            <view class="icon-wrap">
-              <iconfont class="icon" name="pretty" size="60"/>
-            </view>
-            <text class='text'>美妆</text>
+            <text class='text'>吃饭</text>
           </view>
           <!-- test -->
 
         </view>
+    </view>
+  </view>
+
+  <view wx:if="{{isShowKeyboard}}" class='keyboard'>
+    <view class='result'>
+      <text class='money'>{{money}}</text>
+      <text>元</text>
+    </view>
+    <view class='nums'>
+      <view class='column right-col'>
+        <view class='row' bindtap='tapRemove' hover-class='row-hover'>x</view>
+        <view class='ok' bindtap='addCrazyRecords'>入账</view>
+      </view>
+      <view class='column'>
+        <view class='row' bindtap='tapNum' data-num='9' hover-class='row-hover'>9</view>
+        <view class='row' bindtap='tapNum' data-num='6' hover-class='row-hover'>6</view>
+        <view class='row' bindtap='tapNum' data-num='3' hover-class='row-hover'>3</view>
+        <view class='row row-small' hover-class='row-hover' bindtap='changeDate'>2020-04-06</view>
+      </view>
+      <view class='column'>
+        <view class='row' bindtap='tapNum' data-num='8' hover-class='row-hover'>8</view>
+        <view class='row' bindtap='tapNum' data-num='5' hover-class='row-hover'>5</view>
+        <view class='row' bindtap='tapNum' data-num='2' hover-class='row-hover'>2</view>
+        <view class='row' bindtap='tapNum' data-num='0' hover-class='row-hover'>0</view>
+      </view>
+      <view class='column'>
+        <view class='row' bindtap='tapNum' data-num='7' hover-class='row-hover'>7</view>
+        <view class='row' bindtap='tapNum' data-num='4' hover-class='row-hover'>4</view>
+        <view class='row' bindtap='tapNum' data-num='1' hover-class='row-hover'>1</view>
+        <view class='row' bindtap='tapPoint' hover-class='row-hover'>.</view>
       </view>
     </view>
-
   </view>
 </view>
 
