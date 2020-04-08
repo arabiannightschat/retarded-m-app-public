@@ -70,19 +70,26 @@
 
   <view wx:if="{{isShowKeyboard}}" class='keyboard'>
     <view class='result'>
-      <text class='money'>{{money}}</text>
-      <text>元</text>
+      <view class="rem">
+        <text class="rem-title">备注：</text>
+        <input class="rem-input" value='{{rem}}'/>
+      </view>
+      <view>
+        <text class='money'>{{money}}</text>
+        <text>元</text>
+      </view>
     </view>
     <view class='nums'>
       <view class='column right-col'>
         <view class='row' bindtap='tapRemove' hover-class='row-hover'>x</view>
+        <view class='row' bindtap='tapDate' hover-class='row-hover'>今天</view>
         <view class='ok' bindtap='addCrazyRecords'>入账</view>
       </view>
       <view class='column'>
         <view class='row' bindtap='tapNum' data-num='9' hover-class='row-hover'>9</view>
         <view class='row' bindtap='tapNum' data-num='6' hover-class='row-hover'>6</view>
         <view class='row' bindtap='tapNum' data-num='3' hover-class='row-hover'>3</view>
-        <view class='row row-small' hover-class='row-hover' bindtap='changeDate'>2020-04-06</view>
+        <view class='row' hover-class='row-hover' bindtap='taoDown'>V</view>
       </view>
       <view class='column'>
         <view class='row' bindtap='tapNum' data-num='8' hover-class='row-hover'>8</view>

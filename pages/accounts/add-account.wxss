@@ -107,17 +107,35 @@
   height: 504rpx;
 }
 
+/* 键盘顶部 */
 .result {
   height: 100rpx;
   line-height: 100rpx;
   padding: 0 30rpx;
-  text-align: right;
+  display: flex;
+  justify-content: space-between
+}
+
+.rem {
+  display: flex;
+  letter-spacing: 4rpx;
+}
+
+.rem-title {
+  margin: 0 10rpx;
+}
+
+.rem-input {
+  height: 100rpx;
+  line-height: 100rpx;
 }
 
 .money {
   font-size: 50rpx;
   padding-right: 20rpx;
 }
+
+/* 按键 */
 
 .nums {
   height: 80%;
@@ -137,20 +155,16 @@
   line-height: 100rpx;
 }
 
-.row-small {
-  font-size: 25rpx;
-}
-
 .row-hover {
   border-top: 1rpx #bfbfbf solid;
 }
 
 .ok {
-  height: 300rpx;
+  height: 201rpx;
   border-top:1rpx #f8f8f8 solid;
   text-align: center;
   background: #fc9e7c;
-  line-height: 302rpx;
+  line-height: 201rpx;
 }
 
 .down {

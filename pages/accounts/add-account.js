@@ -7,7 +7,8 @@ Page({
   data: {
     statusBarHeight: 0, // 沉浸栏高度
     isShowKeyboard: true,
-    money: '0.00'
+    money: '0.00',
+    rem: ''
   },
 
   /**
