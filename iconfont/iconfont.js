@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // back | food-3 | food-2 | wear | air | food | pretty | house | backup | gona
+    // backspace | arrow-down | back | food-3 | food-2 | wear | air | food | pretty | house | backup | gona
     name: {
       type: String,
     },

@@ -148,6 +148,14 @@
   float: right;
 }
 
+.nums-icon {
+  display:inline-block;
+}
+
+.v-align {
+  vertical-align: -8rpx;
+}
+
 .row {
   height: 100rpx;
   border-top:1rpx #f8f8f8 solid;
