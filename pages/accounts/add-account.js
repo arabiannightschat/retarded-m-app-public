@@ -1,4 +1,6 @@
 // pages/accounts/add-account.js
+var app = getApp();
+var dateUtils = require("../../utils/date.js");
 Page({
 
   /**
@@ -8,7 +10,9 @@ Page({
     statusBarHeight: 0, // 沉浸栏高度
     isShowKeyboard: true,
     money: '0.00',
-    rem: ''
+    rem: '',
+    types: {},
+    checkedTypeId:'',
   },
 
   /**
@@ -24,10 +28,69 @@ Page({
         })
       },
     });
+
+    // 获取记账类型
+    wx.request({
+      url: app.globalData.baseUrl + "api/records/recordsType/getTypes",
+      header: {
+        sessionId: wx.getStorageSync('sessionId')
+      },
+      method: "get",
+      success: data => {
+        this.setData({
+          types : data.data.data
+        })
+      }
+    })
   },
 
   back: function(){
     wx.navigateBack();
+  },
+
+  pickType: function(e) {
+    var typeId = e.currentTarget.dataset.typeId;
+    wx.vibrateShort()
+    this.setData({
+      checkedTypeId : typeId,
+      isShowKeyboard: true
+    })
+  },
+
+  
+  inputRem: function(e) {
+    this.setData({
+      rem: e.detail.value
+    })
+  },
+
+  addRecord: function() {
+    wx.request({
+      url: app.globalData.baseUrl + 'api/records/record/addRecord',
+      header: {
+        sessionId: wx.getStorageSync('sessionId'),
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        recordTypeId : this.data.checkedTypeId,
+        money: Number(this.data.money),
+        description: this.data.rem,
+        dt: new Date()
+      },
+      method: 'post',
+      success : data => {
+        wx.showToast({
+          title: '已入账',
+          icon: 'success',
+          duration: 400,
+          mask: true
+        });
+        setTimeout(function () {
+          wx.navigateBack();
+        }, 400)
+      }
+    })
+
   },
 
   /**

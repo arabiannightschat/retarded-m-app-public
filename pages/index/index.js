@@ -108,18 +108,6 @@ Page({
   },
 
   /**
-   * 图表详细数据展示
-   */
-  touchHandler: function (e) {
-    this.data.lineChart.showToolTip(e, {
-      background: '#fe5856',
-      format: function (item, category) {
-        return category + ' ' + item.name + ' : ￥' + item.data
-      }
-    });
-  },
-
-  /**
    * 获取最近数据
    */
   getRecentData: function () {

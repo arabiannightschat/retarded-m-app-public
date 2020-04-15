@@ -16,21 +16,14 @@
       <view class="card-content">
         <view class="tab">常用</view>
         <view class="types">
-          <view class='type' bindtap='pickType'>
-            <view class="icon-wrap">
-              <iconfont class="icon" name="food-2" size="60"/>
+
+          <view class='type' wx:for="{{types.commons}}" wx:key="typeId" bindtap='pickType' data-type-id='{{item.typeId}}'>
+            <view class="icon-wrap {{item.typeId == checkedTypeId ? 'active': ''}}">
+              <iconfont class="icon" name="{{item.icon}}" size="60"/>
             </view>
-            <text class='text'>吃饭</text>
+            <text class='text'>{{item.name}}</text>
           </view>
 
-          <!-- test -->
-          <view class='type' bindtap='pickType'>
-            <view class="icon-wrap active">
-              <iconfont class="icon" name="pretty" size="60"/>
-            </view>
-            <text class='text'>美妆</text>
-          </view>
-          <!-- test -->
         </view>
       <!-- 卡片内容结束 -->
       </view>
@@ -43,13 +36,13 @@
   <view class="middle">
     <view class="middle-wrap">
       <view class="types">
-          <view class='type' bindtap='pickType'>
-            <view class="icon-wrap">
-              <iconfont class="icon" name="food-2" size="60"/>
+          <view class='type' wx:for="{{types.others}}" wx:key="typeId" bindtap='pickType' data-type-id='{{item.typeId}}'>
+            <view class="icon-wrap {{item.typeId == checkedTypeId ? 'active': ''}}">
+              <iconfont class="icon" name="{{item.icon}}" size="60"/>
             </view>
-            <text class='text'>吃饭</text>
+            <text class='text'>{{item.name}}</text>
           </view>
-        </view>
+      </view>
     </view>
   </view>
 
@@ -57,7 +50,7 @@
     <view class='result'>
       <view class="rem">
         <text class="rem-title">备注：</text>
-        <input class="rem-input" value='{{rem}}'/>
+        <input class="rem-input" value='{{rem}}' confirm-type="next" bindinput="inputRem"/>
       </view>
       <view>
         <text class='money'>{{money}}</text>
@@ -68,13 +61,13 @@
       <view class='column right-col'>
         <view class='row' bindtap='tapRemove' hover-class='row-hover'><iconfont class="nums-icon v-align" size="40" name="backspace"/></view>
         <view class='row' bindtap='tapDate' hover-class='row-hover'>今天</view>
-        <view class='ok' bindtap='addCrazyRecords'>入账</view>
+        <view class='ok' bindtap='addRecord'>入账</view>
       </view>
       <view class='column'>
         <view class='row' bindtap='tapNum' data-num='9' hover-class='row-hover'>9</view>
         <view class='row' bindtap='tapNum' data-num='6' hover-class='row-hover'>6</view>
         <view class='row' bindtap='tapNum' data-num='3' hover-class='row-hover'>3</view>
-        <view class='row' hover-class='row-hover' bindtap='taoDown'><iconfont class="nums-icon" size="25" name="arrow-down"/></view>
+        <view class='row' hover-class='row-hover' bindtap='tapDown'><iconfont class="nums-icon" size="25" name="arrow-down"/></view>
       </view>
       <view class='column'>
         <view class='row' bindtap='tapNum' data-num='8' hover-class='row-hover'>8</view>
