@@ -1,6 +1,7 @@
 // pages/accounts/add-account.js
 var app = getApp();
 var dateUtils = require("../../utils/date.js");
+var commUtils = require("../../utils/common.js")
 Page({
 
   /**
@@ -65,6 +66,11 @@ Page({
   },
 
   addRecord: function() {
+    console.log(this.data.checkedTypeId)
+    if (!this.data.checkedTypeId){
+      commUtils.toastInfo("还没选择记账类型")
+      return;
+    }
     wx.request({
       url: app.globalData.baseUrl + 'api/records/record/addRecord',
       header: {
@@ -79,15 +85,7 @@ Page({
       },
       method: 'post',
       success : data => {
-        wx.showToast({
-          title: '已入账',
-          icon: 'success',
-          duration: 400,
-          mask: true
-        });
-        setTimeout(function () {
-          wx.navigateBack();
-        }, 400)
+        commUtils.toastSuccessAndBack('已入账')
       }
     })
 

@@ -14,6 +14,7 @@ App({
           method: "get",
           success: data => {
             var d = data.data.data;
+            console.log(d)
             //服务器返回的sessionId存入缓存,在以后的每次请求中都发送这个标识
             wx.setStorageSync('sessionId', d.sessionId);
             wx.setStorageSync('chargeDayCount', d.chargeDayCount);

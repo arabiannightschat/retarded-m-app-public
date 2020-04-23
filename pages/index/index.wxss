@@ -38,13 +38,6 @@
   padding: 50rpx;
 }
 
-.blank-card {
-  height: 500rpx;
-  font-size: 70rpx;
-  line-height: 500rpx;
-  text-align: center;
-}
-
 .gray-color{
   color: #cccccc;
 }
@@ -94,6 +87,10 @@
   margin: 50rpx 40rpx 40rpx 40rpx;
 }
 
+.single-day {
+  margin-top: 40rpx;
+}
+
 .records-area .title {
   letter-spacing: 7rpx;
   color: #666
@@ -141,4 +138,45 @@
   bottom: 80rpx;
   box-shadow: 4px 4px 5px 0px #efefef;
   padding: 10rpx;
+}
+
+.daily-records {
+  position: relative;
+}
+/* 删除框 */
+.del-model {
+  position: absolute;
+  box-shadow: 4rpx 4rpx 15rpx 0 #DCDFE6;
+  width:200rpx;
+  height:70rpx;
+  top:80rpx;
+  left:130rpx;
+  z-index: 10000;
+  text-align: center;
+  line-height: 70rpx;
+  background: #ffffff
+}
+
+.fill-all {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  top: 0;
+}
+
+.no-data {
+  width: 200rpx;
+  margin: 150rpx auto 50rpx auto;
+  display: block;
+}
+
+.no-data-2 {
+  width: 200rpx;
+  margin: 200rpx auto 50rpx auto;
+  display: block;
+}
+
+.no-data-text {
+  text-align: center;
+  color: #999
 }

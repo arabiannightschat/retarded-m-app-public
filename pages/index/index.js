@@ -1,5 +1,6 @@
 // pages/index/index.js
 var app = getApp();
+var commUtils = require("../../utils/common.js")
 Page({
 
   /**
@@ -22,7 +23,9 @@ Page({
       daySpending: [0], // 日花销
       dayBudget: [0], // 日预算
       dynamicDayBudget: [0] //日动态预算
-    }
+    },
+    recentRecords:[],
+    modaling: false, // 是否正在弹窗
 
   },
 
@@ -125,48 +128,60 @@ Page({
           wx.navigateTo({
             url: '../setting/setting'
           });
-        } else {
-          console.log("-- 请求成功，数据正确！", d)
-          this.setData({
-            isExistNote: true,
-            simpleData: {
-              balance: d.balance.toFixed(2), // 账本余额
-              dayToNextMonth: d.dayToNextMonth, //距离月末天数
-              year: d.year, // 当前年
-              month: d.month // 当前月
-            },
-            chartsData: {
-              categories: d.categories, // 日期
-              daySpending: d.daySpending, // 日花销
-              dayBudget: d.dayBudget, // 日预算
-              dynamicDayBudget: d.dynamicDayBudget //日动态预算
-            }
-          })
-          if (this.data.chartsData.categories.length > 0){
-            console.log("-- 图表数据正确，将绘制图表")
-            this.setData({
-              isExistRecords: true
-            })
-            // 数据刷新后绘制图表，否则图表会陷入死循环
-            this.createLineCharts();
-          } else {
-            console.log("-- 近期没有记账记录，不刷新图表")
-            // 测试代码 -- start --
-            console.log("-- 使用测试数据，撑起图表看效果")
-            this.setData({
-              chartsData: {
-                categories: ['3.25', '3.26', '3.27', '3.28', '3.29', '3.30', '3.31'], // 日期
-                daySpending: [40, 32, 65, 110, 15], // 日花销
-                dayBudget: [80, 80, 80, 80, 80], // 日预算
-                dynamicDayBudget: [92, 89, 85, 90, 95] //日动态预算
-              },
-              isExistRecords: true
-            })
-            this.createLineCharts();
-            // 测试代码 -- end --
+          return;
+        }
+        
+        console.log("-- 基本数据请求成功，数据正确！", d)
+        this.setData({
+          isExistNote: true,
+          simpleData: {
+            balance: d.balance.toFixed(2), // 账本余额
+            dayToNextMonth: d.dayToNextMonth, //距离月末天数
+            year: d.year, // 当前年
+            month: d.month // 当前月
+          },
+          chartsData: {
+            categories: d.categories, // 日期
+            daySpending: d.daySpending, // 日花销
+            dayBudget: d.dayBudget, // 日预算
+            dynamicDayBudget: d.dynamicDayBudget //日动态预算
           }
+        })
+
+        if (this.data.chartsData.categories.length > 0){
+          console.log("-- 图表数据正确，将绘制图表")
+          this.setData({
+            isExistRecords: true
+          })
+          // 数据刷新后绘制图表，否则图表会陷入死循环
+          this.createLineCharts();
+        } else {
+          console.log("-- 近期没有记账记录，不刷新图表")
         }
       }
+    })
+
+    // 请求账目数据
+    wx.request({
+      url: app.globalData.baseUrl + "api/records/record/getRecentRecords",
+      header: {
+        sessionId: wx.getStorageSync('sessionId')
+      },
+      method: "get",
+      success: data => {
+        var d = data.data.data;
+        for(var i = 0 ; i < d.length; i++){
+          d[i].totalSpending = d[i].totalSpending.toFixed(2)
+          for(var j = 0 ; j < d[i].records.length ; j++) {
+            d[i].records[j].money = d[i].records[j].money.toFixed(2)
+          }
+        }
+        console.log('-- 账目数据请求成功，数据正确！',d)
+        this.setData({
+          recentRecords:d
+        })
+      }
+     
     })
   },
 
@@ -229,5 +244,67 @@ Page({
       }
     });
     console.log("-- 绘制图表完成")
+  },
+
+  modal: function (e) {
+    wx.vibrateShort()
+    var p_index = e.currentTarget.dataset.p_index
+    var index = e.currentTarget.dataset.index
+    console.log(p_index, index)
+    var list = this.data.recentRecords
+    list[p_index].records[index].delShow = true
+    this.setData({
+      recentRecords: list,
+      modaling: true
+    })
+    console.log(this.data.recentRecords)
+  },
+
+  del: function (e) {
+    wx.showLoading({
+      title: '正在删除'
+    })
+    var id = e.currentTarget.dataset.id
+    wx.request({
+      url: app.globalData.baseUrl + 'api/records/record/delRecord',
+      header: {
+        sessionId: wx.getStorageSync('sessionId'),
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        recordId: id
+      },
+      method: "post",
+      success: data => {
+        wx.hideLoading()
+        commUtils.toastSuccess("删掉了！")
+        this.getRecentData()
+      }
+    });
+    this.setData({
+      modaling: false
+    })
+  },
+
+  clear: function () {
+    if (this.data.modaling == true) {
+      var list = this.data.recentRecords
+      for (var i = 0; i < list.length; i++) {
+        for (var j = 0; j < list[i].records.length; j++) {
+          list[i].records[j].delShow = false
+        }
+      }
+      this.setData({
+        recentRecords: list,
+        modaling: false
+      })
+    }
+  },
+
+  // 跳转到初始设置页
+  goToSetting: function(){
+    wx.navigateTo({
+      url: '../setting/setting'
+    });
   }
 })
