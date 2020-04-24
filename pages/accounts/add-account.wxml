@@ -60,7 +60,9 @@
     <view class='nums'>
       <view class='column right-col'>
         <view class='row' bindtap='tapRemove' hover-class='row-hover'><iconfont class="nums-icon v-align" size="40" name="backspace"/></view>
-        <view class='row' bindtap='tapDate' hover-class='row-hover'>今天</view>
+        <picker mode="date" value="{{date}}" start="{{firstDayOfMonth}}" end="{{now}}" bindchange="bindDateChange">
+            <view class='row' hover-class='row-hover'>{{dateText}}</view>
+        </picker>
         <view class='ok' bindtap='addRecord'>入账</view>
       </view>
       <view class='column'>

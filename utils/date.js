@@ -77,6 +77,11 @@ function getLastMonthDay(day){
   return year + "-" + fullMonth + "-" + fullDay;
 }
 
+// 得到本月1号的日期
+function getFirstDayOfMonth(date){
+  return getYear(date) + "-" + getMonth(date) + "-01";
+}
+
 module.exports = {
   format : format,
   plus : plus,
@@ -86,5 +91,6 @@ module.exports = {
   diff:diff,
   getMonth: getMonth,
   getYear: getYear,
-  getLastMonthDay: getLastMonthDay
+  getLastMonthDay: getLastMonthDay,
+  getFirstDayOfMonth: getFirstDayOfMonth
 }

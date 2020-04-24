@@ -14,6 +14,10 @@ Page({
     rem: '',
     types: {},
     checkedTypeId:'',
+    date: new Date(),
+    dateText:'今天',
+    firstDayOfMonth: '',
+    now: ''
   },
 
   /**
@@ -42,6 +46,14 @@ Page({
           types : data.data.data
         })
       }
+    })
+
+    var firstDayOfMonth = dateUtils.getFirstDayOfMonth(new Date());
+    var now = dateUtils.format(new Date())
+    this.setData({
+      firstDayOfMonth: firstDayOfMonth,
+      now: now
+
     })
   },
 
@@ -81,7 +93,7 @@ Page({
         recordTypeId : this.data.checkedTypeId,
         money: Number(this.data.money),
         description: this.data.rem,
-        dt: new Date()
+        dt: this.data.date
       },
       method: 'post',
       success : data => {
@@ -191,5 +203,20 @@ Page({
       isShowKeyboard: false,
       money: ''
     })
-  }
+  },
+  bindDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    var date = e.detail.value
+    var dateText = ''
+    switch(dateUtils.diffDays(date)){
+      case 0: dateText = '今天';break;
+      case -1: dateText = '昨天';break;
+      case -2: dateText = '前天';break;
+      default: dateText = date
+    }
+    this.setData({
+      date: new Date(date),
+      dateText: dateText
+    })
+  },
 })
