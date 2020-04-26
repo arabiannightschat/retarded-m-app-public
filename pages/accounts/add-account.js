@@ -14,7 +14,7 @@ Page({
     rem: '',
     types: {},
     checkedTypeId:'',
-    date: new Date(),
+    date: '',
     dateText:'今天',
     firstDayOfMonth: '',
     now: ''
@@ -24,6 +24,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var dt = options.dt
+    if(!dt) {
+      dt = dateUtils.format(new Date())
+    }
+    this.dateToDateText(dt)
+    console.log(this.data.date)
+
     var that = this
     // 获取沉浸栏高度
     wx.getSystemInfo({
@@ -53,7 +61,6 @@ Page({
     this.setData({
       firstDayOfMonth: firstDayOfMonth,
       now: now
-
     })
   },
 
@@ -93,7 +100,7 @@ Page({
         recordTypeId : this.data.checkedTypeId,
         money: Number(this.data.money),
         description: this.data.rem,
-        dt: this.data.date
+        dt: new Date(this.data.date)
       },
       method: 'post',
       success : data => {
@@ -207,16 +214,19 @@ Page({
   bindDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     var date = e.detail.value
+    this.dateToDateText(date)
+  },
+  dateToDateText: function(date) {
     var dateText = ''
-    switch(dateUtils.diffDays(date)){
-      case 0: dateText = '今天';break;
-      case -1: dateText = '昨天';break;
-      case -2: dateText = '前天';break;
+    switch (dateUtils.diffDays(date)) {
+      case 0: dateText = '今天'; break;
+      case -1: dateText = '昨天'; break;
+      case -2: dateText = '前天'; break;
       default: dateText = date
     }
     this.setData({
-      date: new Date(date),
+      date: date,
       dateText: dateText
     })
-  },
+  }
 })

@@ -110,6 +110,14 @@ Page({
     })
   },
 
+  startRecordWithDt : function(e) {
+    var dt = e.currentTarget.dataset.dt
+    console.log(dt)
+    wx.navigateTo({
+      url: '../accounts/add-account?dt=' + dt,
+    })
+  },
+
   /**
    * 获取最近数据
    */

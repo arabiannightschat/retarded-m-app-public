@@ -93,6 +93,7 @@
 
 .records-area .title {
   letter-spacing: 7rpx;
+  margin-bottom:10px;
   color: #666
 }
 
@@ -109,7 +110,7 @@
 }
 
 .record {
-  padding: 35rpx 0;
+  padding: 32rpx 0;
   font-size: 30rpx;
   border-bottom: 1rpx #efefef solid;
 }
@@ -137,7 +138,7 @@
   right: 200rpx;
   bottom: 80rpx;
   box-shadow: 4px 4px 5px 0px #efefef;
-  padding: 10rpx;
+  padding: 15rpx;
 }
 
 .daily-records {
@@ -179,4 +180,8 @@
 .no-data-text {
   text-align: center;
   color: #999
+}
+
+.margin-left-5 {
+  margin-left:5px;
 }

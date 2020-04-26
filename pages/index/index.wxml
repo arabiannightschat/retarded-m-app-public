@@ -41,6 +41,8 @@
     <view class="single-day" wx:for="{{recentRecords}}" wx:for-index="p_index" wx:key="date">
       <view class="title">
         <view class="align-left">{{item.date}}</view>
+        <iconfont name="gona" class="align-left margin-left-5" bindtap="startRecordWithDt" data-dt="{{item.dt}}"
+            size="40" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}"/>
         <view class="align-right">支出：￥{{item.totalSpending}}</view>
         <view class="clear-both"></view>
       </view>
@@ -62,11 +64,11 @@
   </view>
   <!-- 记账入口 -->
   <view class="new-records-icon" bindtap="startRecord" wx:if="{{isExistNote}}">
-    <iconfont name="gona" size="100" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
+    <iconfont name="gona" size="80" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
   </view>
   <!-- 初始设置入口 -->
   <view class="new-records-icon" bindtap="goToSetting" wx:else>
-    <iconfont name="gona" size="100" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
+    <iconfont name="gona" size="80" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
   </view>
 </view>
 
