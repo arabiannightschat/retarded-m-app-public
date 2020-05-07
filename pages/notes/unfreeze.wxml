@@ -5,10 +5,8 @@
   </view>
   <view class="section">
     <view class="info">您有处于冻结状态的记账本</view>
+    <view class="info">{{freezeNote.name}} 余额：{{freezeNote.balance}} 日预算：{{freezeNote.dayBudget}}</view>
     <view class="title">如果你要解除冻结，系统将默认为未记账的时间内，均按照预算花费</view>
-    <view class="title">账本名称：{{freezeNote.name}}</view>
-    <view class="title">余额：{{freezeNote.balance}}</view>
-    <view class="title">月预算：{{freezeNote.monthBudget}}</view>
   </view>
   <view class="button-wrap">
     <view class="btn" bindtap="unfreeze">解除冻结</view>
