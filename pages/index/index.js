@@ -47,7 +47,7 @@ Page({
     app.loginCallback = res => {
       // 登录回调后获取最近数据
       console.log("-- 登录回调事件触发")
-      this.getRecentData(); 
+      this.getFreezeNote(); 
     }
   },
 
@@ -65,7 +65,7 @@ Page({
     console.log("-- 主页面 index - onShow");
     if (app.globalData.isLoginCompleted) {
       console.log("-- 完成登录后每次打开页面刷新")
-      this.getRecentData();
+      this.getFreezeNote();
     }
   },
 
@@ -116,6 +116,30 @@ Page({
     wx.navigateTo({
       url: '../accounts/add-account?dt=' + dt,
     })
+  },
+
+  /**
+   * 获取冻结账本
+   */
+  getFreezeNote: function(){
+    wx.request({
+      url: app.globalData.baseUrl + "api/notes/note/getFreezeNote",
+      header: {
+        sessionId: wx.getStorageSync('sessionId')
+      },
+      method: "get",
+      success: data => {
+        var freezeNote = data.data.data
+        if (freezeNote) {
+          // 展示冻结账本，提供选项解冻或创建新账本
+          wx.navigateTo({
+            url: '../notes/unfreeze?freezeNote=' + JSON.stringify(freezeNote)
+          });
+        } else {
+          this.getRecentData()
+        }
+      }
+    });
   },
 
   /**
@@ -178,6 +202,7 @@ Page({
       method: "get",
       success: data => {
         var d = data.data.data;
+        return;
         for(var i = 0 ; i < d.length; i++){
           d[i].totalSpending = d[i].totalSpending.toFixed(2)
           for(var j = 0 ; j < d[i].records.length ; j++) {

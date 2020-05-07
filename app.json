@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/accounts/add-account",
+    "pages/notes/unfreeze",
     "pages/setting/setting",
     "pages/records/records",
     "pages/export/export",
