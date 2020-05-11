@@ -1,4 +1,5 @@
 // pages/notes/unfreeze.js
+var app = getApp();
 Page({
 
   /**
@@ -16,6 +17,32 @@ Page({
     console.log(freezeNote);
     this.setData({
       freezeNote: freezeNote
+    })
+  },
+
+  unfreeze : function(){
+    wx.showLoading({
+      title: '正在解冻账本',
+    })
+    wx.request({
+      url: app.globalData.baseUrl + 'api/notes/note/unfreeze',
+      header: {
+        sessionId: wx.getStorageSync('sessionId'),
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: "post",
+      success: data => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '已解冻账本',
+          icon: 'success',
+          duration: 400,
+          mask: true
+        });
+        setTimeout(function () {
+          wx.navigateBack();
+        }, 400)
+      }
     })
   },
 

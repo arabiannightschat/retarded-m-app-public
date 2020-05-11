@@ -17,6 +17,11 @@
   color: #bcbcbc;
 }
 
+.info-small {
+  margin-top: 10rpx;
+  font-size: 25rpx;
+}
+
 .title {
   margin-top: 35rpx;
 }

@@ -162,6 +162,10 @@ Page({
           });
           return;
         }
+
+        if (d.note.monthStatisticsState == 0){
+            // TODO 月份报告页
+        }
         
         console.log("-- 基本数据请求成功，数据正确！", d)
         this.setData({
