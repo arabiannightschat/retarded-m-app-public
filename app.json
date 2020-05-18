@@ -7,6 +7,7 @@
     "pages/records/records",
     "pages/export/export",
     "pages/new-record/new-record",
+    "pages/statistics/last-month",
 
     "pages/notes/notes",
     "pages/new-note/new-note",

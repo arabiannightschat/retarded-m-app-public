@@ -3,63 +3,68 @@
   <!-- 顶部 -->
   <view class="top">
     <!-- 背景图 -->
-    <image src="../../images/index/background-top.jpg" class="background-top"/>
-    <!-- 沉浸栏 -->
-    <view style="width:100%;height:{{statusBarHeight}}px"></view>
-    <!-- 标题栏 -->
-    <view class="title">
-      <view>今天是你记账的第</view>
-      <view><text class="large-font">{{chargeDayCount}}</text> 天</view>
-    </view>
-    <!-- 卡片 -->
-    <view class="card">
-      <view class="card-content" wx:if="{{isExistNote}}">
-        <!-- 当前日期展示 -->
-        <view class="now-date">
-          <view>{{simpleData.year}}年</view>
-          <view class="large-font-2">{{simpleData.month}}月</view>
-        </view>
-        <!-- 卡片数据展示 -->
-        <view class="card-data">
-          <view class="gray-color">距离结算还有<text class="main-color"> {{simpleData.dayToNextMonth}} </text>天，预算余额</view>
-          <view class="main-color">￥ <text class="large-font-2">{{simpleData.balance}}</text></view>
-        </view>
-        <!-- 图表 -->
-        <view class="container" wx:if="{{isExistRecords}}">
-          <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
-        </view>
-        <view class="blank-canvas" wx:else>暂无记账数据</view>
-      </view>
-      <view wx:else class="card-content">
-        <image mode="widthFix" class="no-data" src="../../images/index/no-data.jpg"></image>
-        <view class="no-data-text" style="margin-bottom:100rpx;">暂无账本数据</view>
-      </view>
-    </view>
-  </view>
-  <!-- 账目 -->  
-  <view class="records-area">
-    <view class="single-day" wx:for="{{recentRecords}}" wx:for-index="p_index" wx:key="date">
+    <image src="../../images/index/background-top.jpg" class="background-top" />
+    <view style="position:relative;top:-468rpx;">
+      <!-- 沉浸栏 -->
+      <view style="width:100%;height:{{statusBarHeight}}px;"></view>
+      <!-- 标题栏 -->
       <view class="title">
-        <view class="align-left">{{item.date}}</view>
-        <iconfont name="gona" class="align-left margin-left-5" bindtap="startRecordWithDt" data-dt="{{item.dt}}"
-            size="40" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}"/>
-        <view class="align-right">支出：￥{{item.totalSpending}}</view>
-        <view class="clear-both"></view>
+        <view>今天是你记账的第</view>
+        <view>
+          <text class="large-font">{{chargeDayCount}}</text> 天</view>
       </view>
-      <view class="daily-records" wx:for="{{item.records}}" wx:for-index="index" bindlongpress='modal' data-index='{{index}}' data-p_index='{{p_index}}' wx:key="recordId">
-        <view class='del-model' bindtap='del' data-id='{{item.recordId}}' wx:if="{{item.delShow}}">删除</view>
-        <view class="record">
-          <iconfont name="{{item.icon}}" size="40" class="align-left" />
-          <view class="record-title align-left">{{item.description}}</view>
-          <view wx:if="{{item.isNew}}" class="record-tag align-left">new</view>
-          <view class="record-money align-right">￥{{item.money}}</view>
-          <view class="clear-both"></view>
+      <!-- 卡片 -->
+      <view class="card">
+        <view class="card-content" wx:if="{{isExistNote}}">
+          <!-- 当前日期展示 -->
+          <view class="now-date">
+            <view>{{simpleData.year}}年</view>
+            <view class="large-font-2">{{simpleData.month}}月</view>
+          </view>
+          <!-- 卡片数据展示 -->
+          <view class="card-data">
+            <view class="gray-color">距离结算还有
+              <text class="main-color"> {{simpleData.dayToNextMonth}} </text>天，预算余额</view>
+            <view class="main-color">￥
+              <text class="large-font-2">{{simpleData.balance}}</text>
+            </view>
+          </view>
+          <!-- 图表 -->
+          <view class="container" wx:if="{{isExistRecords}}">
+            <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
+          </view>
+          <view class="blank-canvas" wx:else>暂无记账数据</view>
+        </view>
+        <view wx:else class="card-content">
+          <image mode="widthFix" class="no-data" src="../../images/index/no-data.jpg"></image>
+          <view class="no-data-text" style="margin-bottom:100rpx;">暂无账本数据</view>
         </view>
       </view>
-    </view>
-    <view wx:if="{{recentRecords.length == 0}}">
-      <image mode="widthFix" class="no-data-2" src="../../images/index/no-data.jpg"></image>
-      <view class="no-data-text">暂无近期记账记录</view>
+      <!-- 账目 -->
+      <view class="records-area">
+        <view class="single-day" wx:for="{{recentRecords}}" wx:for-index="p_index" wx:key="date">
+          <view class="title">
+            <view class="align-left">{{item.date}}</view>
+            <iconfont name="gona" class="align-left margin-left-5" bindtap="startRecordWithDt" data-dt="{{item.dt}}" size="40" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
+            <view class="align-right">支出：￥{{item.totalSpending}}</view>
+            <view class="clear-both"></view>
+          </view>
+          <view class="daily-records" wx:for="{{item.records}}" wx:for-index="index" bindlongpress='modal' data-index='{{index}}' data-p_index='{{p_index}}' wx:key="recordId">
+            <view class='del-model' bindtap='del' data-id='{{item.recordId}}' wx:if="{{item.delShow}}">删除</view>
+            <view class="record">
+              <iconfont name="{{item.icon}}" size="40" class="align-left" />
+              <view class="record-title align-left">{{item.description}}</view>
+              <view wx:if="{{item.isNew}}" class="record-tag align-left">new</view>
+              <view class="record-money align-right">￥{{item.money}}</view>
+              <view class="clear-both"></view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{recentRecords.length == 0}}">
+          <image mode="widthFix" class="no-data-2" src="../../images/index/no-data.jpg"></image>
+          <view class="no-data-text">暂无近期记账记录</view>
+        </view>
+      </view>
     </view>
   </view>
   <!-- 记账入口 -->

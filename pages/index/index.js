@@ -165,6 +165,10 @@ Page({
 
         if (d.note.monthStatisticsState == 0){
             // TODO 月份报告页
+            wx.navigateTo({
+              url: '../statistics/last-month'
+            });
+            return;
         }
         
         console.log("-- 基本数据请求成功，数据正确！", d)
@@ -206,7 +210,6 @@ Page({
       method: "get",
       success: data => {
         var d = data.data.data;
-        return;
         for(var i = 0 ; i < d.length; i++){
           d[i].totalSpending = d[i].totalSpending.toFixed(2)
           for(var j = 0 ; j < d[i].records.length ; j++) {
