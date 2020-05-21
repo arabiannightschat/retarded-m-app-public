@@ -26,6 +26,8 @@ Page({
     },
     recentRecords:[],
     modaling: false, // 是否正在弹窗
+    modalingGray: false, // 是否正在弹窗（灰色）
+    lastD:{} // 上个月月份统计数据
 
   },
 
@@ -122,6 +124,7 @@ Page({
    * 获取冻结账本
    */
   getFreezeNote: function(){
+    wx.showLoading();
     wx.request({
       url: app.globalData.baseUrl + "api/notes/note/getFreezeNote",
       header: {
@@ -131,6 +134,7 @@ Page({
       success: data => {
         var freezeNote = data.data.data
         if (freezeNote) {
+          wx.hideLoading();
           // 展示冻结账本，提供选项解冻或创建新账本
           wx.navigateTo({
             url: '../notes/unfreeze?freezeNote=' + JSON.stringify(freezeNote)
@@ -162,14 +166,6 @@ Page({
           });
           return;
         }
-
-        if (d.note.monthStatisticsState == 0){
-            // TODO 月份报告页
-            wx.navigateTo({
-              url: '../statistics/last-month'
-            });
-            return;
-        }
         
         console.log("-- 基本数据请求成功，数据正确！", d)
         this.setData({
@@ -198,6 +194,30 @@ Page({
         } else {
           console.log("-- 近期没有记账记录，不刷新图表")
         }
+        
+        if (d.note.monthStatisticsState == 0) {
+          // 月份报告页
+          this.setData({
+            modalingGray: true
+          })
+          wx.request({
+            url: app.globalData.baseUrl + "api/notes/monthStatistics/getLastMonthStatistics",
+            header: {
+              sessionId: wx.getStorageSync('sessionId')
+            },
+            method: "get",
+            success: data => {
+              var lastD = data.data.data
+              this.setData({
+                lastD: lastD
+              })
+              console.log("-- 月份结算",lastD);
+              wx.hideLoading()
+            }
+
+          })
+
+        }
       }
     })
 
@@ -220,6 +240,7 @@ Page({
         this.setData({
           recentRecords:d
         })
+        wx.hideLoading();
       }
      
     })
@@ -327,7 +348,7 @@ Page({
   },
 
   clear: function () {
-    if (this.data.modaling == true) {
+    if (this.data.modaling) {
       var list = this.data.recentRecords
       for (var i = 0; i < list.length; i++) {
         for (var j = 0; j < list[i].records.length; j++) {
@@ -339,6 +360,11 @@ Page({
         modaling: false
       })
     }
+    if(this.data.modalingGray){
+      this.setData({
+        modalingGray: false
+      })
+    }
   },
 
   // 跳转到初始设置页
@@ -346,5 +372,27 @@ Page({
     wx.navigateTo({
       url: '../setting/setting'
     });
-  }
+  },
+
+  importLastMonthBalance: function(event) {
+    var isImport = event.currentTarget.dataset.isImport;
+    wx.request({
+      url: app.globalData.baseUrl + 'api/notes/monthStatistics/importLastMonthBalance',
+      header: {
+        sessionId: wx.getStorageSync('sessionId'),
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      data: {
+        isImport: isImport
+      },
+      method: "post",
+      success: data => {
+        console.log("-- 上月月结数据转结", isImport == 1 ? '转结至本月' : '清零并忽略' , data)
+        this.setData({
+          modalingGray : false
+        })
+        this.getFreezeNote(); 
+      }
+    });
+  },
 })

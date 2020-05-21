@@ -182,3 +182,64 @@
 .margin-left-5 {
   margin-left:5px;
 }
+
+/* 月份结算弹窗 */
+.fill-all-gray {
+  background:#000;
+  opacity:0.6;
+}
+
+.month-settle {
+  width: 550rpx;
+  height: 700rpx;
+  position: fixed;
+  top: 400rpx;
+  left: 100rpx;
+  background: white;
+  border-radius: 15rpx;
+}
+
+.month-background {
+  position: relative;
+  top: -1rpx;
+}
+
+.month-info {
+  position: absolute;
+  top: 370rpx;
+  width: 100%;
+  text-align: center
+}
+
+.month-primary {
+  font-size: 35rpx;
+}
+
+.month-minor {
+  font-size: 25rpx;
+  color: #aaa;
+  line-height:70rpx;
+}
+
+.month-button-group {
+  position: absolute;
+  top: 575rpx;
+  width: 463rpx;
+  left: 48rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.month-button {
+  width: 200rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 15rpx;
+}
+
+.month-button-hover {
+  color: #5b60f9;
+  background: #f1f1ff;
+}

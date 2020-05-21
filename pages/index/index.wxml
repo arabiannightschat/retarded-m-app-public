@@ -78,3 +78,18 @@
 </view>
 
 <view wx:if="{{modaling}}" class='fill-all' bindtap='clear'></view>
+
+<cover-view wx:if="{{modalingGray}}" class='fill-all fill-all-gray' bindtap='clear'></cover-view>
+<!-- 月份结算弹窗 -->
+<cover-view class="month-settle" wx:if="{{modalingGray}}" >
+  <cover-image class="month-background" src="../../images/index/month-settle.jpg"></cover-image>
+  <cover-view class="month-info">
+    <cover-view class="month-minor">截止 {{lastD.lastDateOfLastMonth}}</cover-view>
+    <cover-view class="month-primary">账本{{lastD.lastMonthStatistics.balance < 0 ? '透支':'结余'}} {{lastD.lastMonthStatistics.balance < 0 ?
+        lastD.lastMonthStatistics.balance*(-1) : lastD.lastMonthStatistics.balance}} 元</cover-view>
+  </cover-view>
+  <cover-view class="month-button-group">
+    <cover-view hover-class="month-button-hover" class="month-button" data-is-import="1" bindtap="importLastMonthBalance">结转到本月</cover-view>
+    <cover-view hover-class="month-button-hover" class="month-button" data-is-import="0" bindtap="importLastMonthBalance">清零并忽略</cover-view>
+  </cover-view>
+</cover-view>

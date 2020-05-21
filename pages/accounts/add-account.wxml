@@ -36,7 +36,7 @@
   <view class="middle">
     <view class="middle-wrap">
       <view class="types">
-          <view class='type' wx:for="{{types.others}}" wx:key="typeId" bindtap='pickType' data-type-id='{{item.typeId}}'>
+          <view class='type' wx:for="{{types.others}}" wx:if="{{item.typeId != '8a44deb8d83111e89d4100163e02uuuu'}}" wx:key="typeId" bindtap='pickType' data-type-id='{{item.typeId}}'>
             <view class="icon-wrap {{item.typeId == checkedTypeId ? 'active': ''}}">
               <iconfont class="icon" name="{{item.icon}}" size="60"/>
             </view>
