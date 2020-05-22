@@ -10,8 +10,6 @@ Page({
     statusBarHeight: 0, // 沉浸栏高度
     lineChart: null, // 图表对象
     chargeDayCount: wx.getStorageSync('chargeDayCount'), // 记账天数
-    isExistNote: false, // 用户是否拥有账本
-    isExistRecords: false, // 账本是否拥有近期数据
     simpleData: {
       balance:'', // 账本余额
       dayToNextMonth: '', //距离月末天数
@@ -27,7 +25,8 @@ Page({
     recentRecords:[],
     modaling: false, // 是否正在弹窗
     modalingGray: false, // 是否正在弹窗（灰色）
-    lastD:{} // 上个月月份统计数据
+    lastD:{}, // 上个月月份统计数据
+    guide: true
 
   },
 
@@ -35,8 +34,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var isGotData = false;
-    console.log("-- 主页面 index - onLoad");
     var that = this
     // 获取沉浸栏高度
     wx.getSystemInfo({
@@ -49,7 +46,7 @@ Page({
     app.loginCallback = res => {
       // 登录回调后获取最近数据
       console.log("-- 登录回调事件触发")
-      this.getFreezeNote(); 
+      this.getRecentData(); 
     }
   },
 
@@ -64,10 +61,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("-- 主页面 index - onShow");
     if (app.globalData.isLoginCompleted) {
       console.log("-- 完成登录后每次打开页面刷新")
-      this.getFreezeNote();
+      this.getRecentData();
     }
   },
 
@@ -121,32 +117,6 @@ Page({
   },
 
   /**
-   * 获取冻结账本
-   */
-  getFreezeNote: function(){
-    wx.showLoading();
-    wx.request({
-      url: app.globalData.baseUrl + "api/notes/note/getFreezeNote",
-      header: {
-        sessionId: wx.getStorageSync('sessionId')
-      },
-      method: "get",
-      success: data => {
-        var freezeNote = data.data.data
-        if (freezeNote) {
-          wx.hideLoading();
-          // 展示冻结账本，提供选项解冻或创建新账本
-          wx.navigateTo({
-            url: '../notes/unfreeze?freezeNote=' + JSON.stringify(freezeNote)
-          });
-        } else {
-          this.getRecentData()
-        }
-      }
-    });
-  },
-
-  /**
    * 获取最近数据
    */
   getRecentData: function () {
@@ -166,10 +136,28 @@ Page({
           });
           return;
         }
-        
+        if(d.note.status == 0) {
+            // 展示冻结账本，提供选项解冻或创建新账本
+            wx.navigateTo({
+              url: '../notes/unfreeze?freezeNote=' + JSON.stringify(d.note)
+            });
+            return;
+        }
+
         console.log("-- 基本数据请求成功，数据正确！", d)
+
+        var recentRecords = d.recentRecords
+        if (recentRecords) {
+          for (var i = 0; i < recentRecords.length; i++) {
+            recentRecords[i].totalSpending = recentRecords[i].totalSpending.toFixed(2)
+            for (var j = 0; j < recentRecords[i].records.length; j++) {
+              recentRecords[i].records[j].money = recentRecords[i].records[j].money.toFixed(2)
+            }
+          }
+          console.log('-- 账目数据请求成功，数据正确！', recentRecords)
+        }
+
         this.setData({
-          isExistNote: true,
           simpleData: {
             balance: d.balance.toFixed(2), // 账本余额
             dayToNextMonth: d.dayToNextMonth, //距离月末天数
@@ -181,25 +169,24 @@ Page({
             daySpending: d.daySpending, // 日花销
             dayBudget: d.dayBudget, // 日预算
             dynamicDayBudget: d.dynamicDayBudget //日动态预算
+          },
+          recentRecords: recentRecords
+        }, () => {
+          if (d.note.monthStatisticsState != 0){
+            this.setData({
+              guide: false
+            })
           }
         })
 
         if (this.data.chartsData.categories.length > 0){
           console.log("-- 图表数据正确，将绘制图表")
-          this.setData({
-            isExistRecords: true
-          })
           // 数据刷新后绘制图表，否则图表会陷入死循环
           this.createLineCharts();
-        } else {
-          console.log("-- 近期没有记账记录，不刷新图表")
         }
         
         if (d.note.monthStatisticsState == 0) {
           // 月份报告页
-          this.setData({
-            modalingGray: true
-          })
           wx.request({
             url: app.globalData.baseUrl + "api/notes/monthStatistics/getLastMonthStatistics",
             header: {
@@ -209,40 +196,15 @@ Page({
             success: data => {
               var lastD = data.data.data
               this.setData({
-                lastD: lastD
+                lastD: lastD,
+                modalingGray: true,
+                guide: false
               })
-              console.log("-- 月份结算",lastD);
-              wx.hideLoading()
+              console.log("-- 月份结算", lastD);
             }
-
           })
-
         }
       }
-    })
-
-    // 请求账目数据
-    wx.request({
-      url: app.globalData.baseUrl + "api/records/record/getRecentRecords",
-      header: {
-        sessionId: wx.getStorageSync('sessionId')
-      },
-      method: "get",
-      success: data => {
-        var d = data.data.data;
-        for(var i = 0 ; i < d.length; i++){
-          d[i].totalSpending = d[i].totalSpending.toFixed(2)
-          for(var j = 0 ; j < d[i].records.length ; j++) {
-            d[i].records[j].money = d[i].records[j].money.toFixed(2)
-          }
-        }
-        console.log('-- 账目数据请求成功，数据正确！',d)
-        this.setData({
-          recentRecords:d
-        })
-        wx.hideLoading();
-      }
-     
     })
   },
 
@@ -263,7 +225,7 @@ Page({
       canvasId: 'lineCanvas',
       type: 'line',
       categories: this.data.chartsData.categories,
-      animation: true,
+      animation: false,
       legend: true,
       series: [{
         name: '日实际消费',
@@ -342,9 +304,6 @@ Page({
         this.getRecentData()
       }
     });
-    this.setData({
-      modaling: false
-    })
   },
 
   clear: function () {
@@ -365,13 +324,6 @@ Page({
         modalingGray: false
       })
     }
-  },
-
-  // 跳转到初始设置页
-  goToSetting: function(){
-    wx.navigateTo({
-      url: '../setting/setting'
-    });
   },
 
   importLastMonthBalance: function(event) {

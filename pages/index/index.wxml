@@ -15,7 +15,7 @@
       </view>
       <!-- 卡片 -->
       <view class="card">
-        <view class="card-content" wx:if="{{isExistNote}}">
+        <view class="card-content">
           <!-- 当前日期展示 -->
           <view class="now-date">
             <view>{{simpleData.year}}年</view>
@@ -30,14 +30,9 @@
             </view>
           </view>
           <!-- 图表 -->
-          <view class="container" wx:if="{{isExistRecords}}">
+          <view class="container" >
             <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
           </view>
-          <view class="blank-canvas" wx:else>暂无记账数据</view>
-        </view>
-        <view wx:else class="card-content">
-          <image mode="widthFix" class="no-data" src="../../images/index/no-data.jpg"></image>
-          <view class="no-data-text" style="margin-bottom:100rpx;">暂无账本数据</view>
         </view>
       </view>
       <!-- 账目 -->
@@ -62,17 +57,13 @@
         </view>
         <view wx:if="{{recentRecords.length == 0}}">
           <image mode="widthFix" class="no-data-2" src="../../images/index/no-data.jpg"></image>
-          <view class="no-data-text">暂无近期记账记录</view>
+          <view class="no-data-text">近几天没有记账呀</view>
         </view>
       </view>
     </view>
   </view>
   <!-- 记账入口 -->
-  <view class="new-records-icon" bindtap="startRecord" wx:if="{{isExistNote}}">
-    <iconfont name="gona" size="80" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
-  </view>
-  <!-- 初始设置入口 -->
-  <view class="new-records-icon" bindtap="goToSetting" wx:else>
+  <view class="new-records-icon" bindtap="startRecord">
     <iconfont name="gona" size="80" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
   </view>
 </view>
@@ -92,4 +83,10 @@
     <cover-view hover-class="month-button-hover" class="month-button" data-is-import="1" bindtap="importLastMonthBalance">结转到本月</cover-view>
     <cover-view hover-class="month-button-hover" class="month-button" data-is-import="0" bindtap="importLastMonthBalance">清零并忽略</cover-view>
   </cover-view>
+</cover-view>
+
+<cover-view class="guide guide-light" wx:if="{{guide}}">
+  <!-- <cover-image class="guide-image-640-480" src="../../images/guide/loading-1.gif"></cover-image> -->
+  <!-- <cover-image class="guide-image-640-480" src="../../images/guide/loading-4.gif"></cover-image> -->
+  <cover-image class="guide-image-640-480" src="../../images/guide/loading-5.gif"></cover-image>
 </cover-view>

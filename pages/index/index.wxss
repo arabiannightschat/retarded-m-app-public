@@ -4,6 +4,33 @@
   color: #333;
 }
 
+.guide {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.guide-dark {
+  background: #09111f
+}
+
+.guide-light {
+  background: #fff
+}
+
+.guide-image-640-480 {
+   width: 640rpx;
+   height: 480rpx;
+   margin: 400rpx auto;
+}
+
+.guide-image-600-450 {
+   width: 600rpx;
+   height: 450rpx;
+   margin: 400rpx auto;
+}
+
 .background-top {
   width: 100%;
   z-index: -10;
@@ -81,7 +108,7 @@
 }
 
 .records-area {
-  margin: 50rpx 40rpx 40rpx 40rpx;
+  margin: 50rpx 50rpx 40rpx 50rpx;
 }
 
 .single-day {
