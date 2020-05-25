@@ -1,7 +1,7 @@
 <!--pages/notes/unfreeze.wxml-->
 <view class="unfreeze">
   <view class="top">
-    <image class="background" src="../../images/setting/icon-setting.png"></image>
+    <image class="background" src="../../images/index/icon-note.png"></image>
   </view>
   <view class="section">
     <view class="info">您有处于冻结状态的记账本</view>

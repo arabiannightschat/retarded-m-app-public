@@ -1,4 +1,4 @@
-// pages/setting/setting.js
+// pages/notes/init.js
 var app = getApp();
 Page({
 
@@ -7,6 +7,27 @@ Page({
    */
   data: {
     monthBudget:'', // 月预算
+    authUserInfo: false
+  },
+
+  bindGetUserInfo: function(e){
+    if(!this.data.authUserInfo) {
+      wx.request({
+        url: app.globalData.baseUrl + 'api/sys/user/addUserInfo',
+        header: {
+          "sessionId": wx.getStorageSync("sessionId"),
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          'userInfo': JSON.stringify(e.detail.userInfo)
+        },
+        method: 'post',
+        success: data => {
+          console.log("-- 微信授权登录成功" + e.detail.userInfo)
+        }
+      })
+    }
+    this.createNote();
   },
 
   createNote: function (){
@@ -20,6 +41,7 @@ Page({
       })
       return;
     }
+
     wx.showLoading({
       title: '正在创建',
     })
@@ -52,7 +74,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userInfo'] == true) {
+          this.setData({
+            authUserInfo: true
+          });
+        }
+      }
+    })
   },
 
   /**

@@ -26,14 +26,25 @@ Page({
     modaling: false, // 是否正在弹窗
     modalingGray: false, // 是否正在弹窗（灰色）
     lastD:{}, // 上个月月份统计数据
-    guide: true
+    loading: true,  // 是否展示加载动画
+    loadingAnimation: {},   // 加载动画透明度变化
 
+    recordsLoadingCount: 0,   // 上拉加载更多次数
+    noRecordsMessage: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: 'ease',
+    })
+    animation.opacity(0.3).step();
+    this.setData({
+      loadingAnimation: animation.export()
+    })  
     var that = this
     // 获取沉浸栏高度
     wx.getSystemInfo({
@@ -71,7 +82,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.setData({
+      noRecordsMessage:'',
+      recordsLoadingCount:0
+    })
   },
 
   /**
@@ -92,6 +106,48 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    if (this.data.noRecordsMessage) {
+      wx.showToast({
+        title: this.data.noRecordsMessage,
+        icon: 'none',
+        duration: 400
+      })
+      return;
+    }
+    wx.showLoading({
+      title: '加载账单数据...',
+    });
+    // 上拉触底时刷新更多的账单数据，追加上去
+    wx.request({
+      url: app.globalData.baseUrl + "api/records/record/recordsLoading",
+      header: {
+        sessionId: wx.getStorageSync('sessionId')
+      },
+      data:{
+        recordsLoadingCount: this.data.recordsLoadingCount + 1
+      },  
+      method: "get",
+      success: data => {
+        var d = data.data.data;
+        if(d.noMore || d.tooLong){
+          var title = d.noMore ? '没有更多账单啦' : '数据太多啦，去账单里继续浏览吧'
+          wx.showToast({
+            title: title,
+            icon: 'none',
+            duration: 400
+          })
+          this.setData({
+            noRecordsMessage: title
+          })
+          return;
+        }
+        this.setData({
+          recentRecords: this.data.recentRecords.concat(d.list),
+          recordsLoadingCount: d.recordsLoadingCount
+        })
+      }
+    });
+    wx.hideLoading();
 
   },
 
@@ -100,6 +156,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  toMonthStatistics: function () {
+    wx.navigateTo({
+      url: '../statistics/month',
+    })
   },
 
   startRecord: function() {
@@ -132,7 +194,7 @@ Page({
         if (d == null){
           console.log("-- 检测到没有账本，跳转到基本设置页！")
           wx.navigateTo({
-            url: '../setting/setting'
+            url: '../notes/init'
           });
           return;
         }
@@ -154,7 +216,7 @@ Page({
               recentRecords[i].records[j].money = recentRecords[i].records[j].money.toFixed(2)
             }
           }
-          console.log('-- 账目数据请求成功，数据正确！', recentRecords)
+          console.log('-- 账目数据解析成功，数据正确！', recentRecords)
         }
 
         this.setData({
@@ -174,7 +236,7 @@ Page({
         }, () => {
           if (d.note.monthStatisticsState != 0){
             this.setData({
-              guide: false
+              loading: false
             })
           }
         })
@@ -198,7 +260,7 @@ Page({
               this.setData({
                 lastD: lastD,
                 modalingGray: true,
-                guide: false
+                loading: false
               })
               console.log("-- 月份结算", lastD);
             }
@@ -343,7 +405,7 @@ Page({
         this.setData({
           modalingGray : false
         })
-        this.getFreezeNote(); 
+        this.getRecentData(); 
       }
     });
   },

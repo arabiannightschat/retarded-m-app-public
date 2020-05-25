@@ -1,7 +1,7 @@
-<!--pages/setting/setting.wxml-->
+<!--pages/notes/init.wxml-->
 <view class="setting">
   <view class="top">
-    <image class="background" src="../../images/setting/icon-setting.png"></image>
+    <image class="background" src="../../images/index/icon-note.png"></image>
   </view>
   <view class="section">
     <view class="info">进行您的初始化设定</view>
@@ -10,6 +10,6 @@
       placeholder='1000.00' maxlength='8' type="number" focus='true' />
   </view>
   <view class="button-wrap">
-    <view class="btn" bindtap="createNote">开始使用</view>
+    <button class="nostyle btn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信授权登录 & 开始使用</button>
   </view>
 </view>
