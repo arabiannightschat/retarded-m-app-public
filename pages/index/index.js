@@ -37,14 +37,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var animation = wx.createAnimation({
-      duration: 1000,
-      timingFunction: 'ease',
-    })
-    animation.opacity(0.3).step();
-    this.setData({
-      loadingAnimation: animation.export()
-    })  
+    this.loadingAnimationFunction();
     var that = this
     // 获取沉浸栏高度
     wx.getSystemInfo({
@@ -59,10 +52,23 @@ Page({
       console.log("-- 登录回调事件触发")
       this.getRecentData(); 
     }
-    if (app.globalData.isLoginCompleted) {
-      console.log("-- 完成登录后每次打开页面刷新")
-      this.getRecentData();
-    }
+  },
+
+  loadingAnimationFunction:function(){
+    var animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: 'ease',
+    })
+    animation.opacity(0.3).step();
+    this.setData({
+      loadingAnimation: animation.export()
+    })  
+  },
+
+  loadingAnimationInOutFunction: function () {
+    this.setData({
+      loading: true
+    })
   },
 
   /**
@@ -76,14 +82,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    if (app.globalData.isLoginCompleted) {
+      console.log("-- 完成登录后每次打开页面刷新")
+      this.setData({
+        loading:true
+      })
+      this.getRecentData();
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+    this.setData({
+      recordsLoadingCount: 0,   // 上拉加载更多次数
+      noRecordsMessage: ''
+    })
   },
 
   /**
@@ -105,16 +120,9 @@ Page({
    */
   onReachBottom: function () {
     if (this.data.noRecordsMessage) {
-      wx.showToast({
-        title: this.data.noRecordsMessage,
-        icon: 'none',
-        duration: 400
-      })
       return;
     }
-    wx.showLoading({
-      title: '加载账单数据...',
-    });
+    this.loadingAnimationInOutFunction();
     // 上拉触底时刷新更多的账单数据，追加上去
     wx.request({
       url: app.globalData.baseUrl + "api/records/record/recordsLoading",
@@ -128,25 +136,25 @@ Page({
       success: data => {
         var d = data.data.data;
         if(d.noMore || d.tooLong){
-          var title = d.noMore ? '没有更多账单啦' : '数据太多啦，去账单里继续浏览吧'
-          wx.showToast({
-            title: title,
-            icon: 'none',
-            duration: 400
-          })
-          this.setData({
-            noRecordsMessage: title
-          })
+          var title = d.noMore ? '已经到底啦！' : '数据太多啦，去账单里继续浏览吧！'
+          var that = this
+          setTimeout(function(){
+            that.setData({
+              noRecordsMessage: title,
+              loading: false
+            })
+          },200)
           return;
         }
         this.setData({
           recentRecords: this.data.recentRecords.concat(d.list),
           recordsLoadingCount: d.recordsLoadingCount
         })
+        this.setData({
+          loading: false
+        })
       }
     });
-    wx.hideLoading();
-
   },
 
   /**
@@ -344,8 +352,8 @@ Page({
   },
 
   del: function (e) {
-    wx.showLoading({
-      title: '正在删除'
+    this.setData({
+      loading:true
     })
     var id = e.currentTarget.dataset.id
     wx.request({
@@ -359,8 +367,6 @@ Page({
       },
       method: "post",
       success: data => {
-        wx.hideLoading()
-        commUtils.toastSuccess("删掉了！")
         this.getRecentData()
       }
     });

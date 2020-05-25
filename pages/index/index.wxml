@@ -59,6 +59,7 @@
           <image mode="widthFix" class="no-data-2" src="../../images/index/no-data.jpg"></image>
           <view class="no-data-text">近几天没有记账呀</view>
         </view>
+        <view class="bottom-label">{{noRecordsMessage}}</view>
       </view>
     </view>
   </view>

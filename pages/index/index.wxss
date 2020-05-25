@@ -270,3 +270,10 @@
   color: #5b60f9;
   background: #f1f1ff;
 }
+
+.bottom-label {
+  position:absolute;
+  bottom:-100rpx;
+  font-size:30rpx;
+  color:#ccc
+}
