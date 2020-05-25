@@ -59,6 +59,10 @@ Page({
       console.log("-- 登录回调事件触发")
       this.getRecentData(); 
     }
+    if (app.globalData.isLoginCompleted) {
+      console.log("-- 完成登录后每次打开页面刷新")
+      this.getRecentData();
+    }
   },
 
   /**
@@ -72,20 +76,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.isLoginCompleted) {
-      console.log("-- 完成登录后每次打开页面刷新")
-      this.getRecentData();
-    }
+    
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    this.setData({
-      noRecordsMessage:'',
-      recordsLoadingCount:0
-    })
+    
   },
 
   /**
