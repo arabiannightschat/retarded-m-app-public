@@ -1,12 +1,19 @@
 // pages/statistics/statistics.js
+var app = getApp();
+var dateUtils = require('../../utils/date.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    areaChart: null,
+    lineChart: null,
     statusBarHeight: 0,
+    lineChartData: {
+      categories: [0], // 日期
+      daySpending: [0], // 日花销
+      dayBudget: [0] // 日预算
+    }
   },
 
   /**
@@ -22,9 +29,35 @@ Page({
         })
       },
     });
+    this.getMonthStatistics();
   },
 
-  createAreaCharts(){
+  getMonthStatistics(){
+    wx.request({
+      url: app.globalData.baseUrl + "api/notes/monthStatistics/getMonthStatistics",
+      header: {
+        sessionId: wx.getStorageSync('sessionId')
+      },
+      data: {
+        monthDate: dateUtils.format(new Date)
+      },
+      method: "get",
+      success: data => {
+          var d = data.data.data
+          console.log(d)
+          this.setData({
+            lineChartData: {
+              categories: d.categories, // 日期
+              daySpending: d.daySpending, // 日花销
+              dayBudget: d.dayBudget // 日预算
+            }
+          });
+          this.createLineCharts();
+      }
+    });
+  },
+
+  createLineCharts(){
 
     var wxCharts = require('../../utils/wxcharts.js');
     var windowWidth = 320;
@@ -35,27 +68,27 @@ Page({
       console.error('getSystemInfoSync failed!');
     }
 
-    this.data.areaChart = new wxCharts({
-      canvasId: 'areaCanvas',
+    this.data.lineChart = new wxCharts({
+      canvasId: 'lineCanvas',
       width: windowWidth,
       background: 'rgba(0,0,0,0)',
       height: 250,
       type: 'line',
-      categories: ['5-1', '5-2', '5-3', '5-4', '5-5', '5-6', '5-7', '5-8', '5-9', '5-10', '5-11', '5-12', '5-13', '5-14', '5-26', '5-26', '5-26', '5-26', '5-1', '5-2', '5-3', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26', '5-26'],
+      categories: this.data.lineChartData.categories,
       series: [{
-        name: '日实际消费',
-        color: '#c1acfe',
-        data: [10, 100, 20, 50, 19, 62, 34, 39, 61, 10, 100, 20, 50, 19, 62, 34, 39, 61, 10, 100, 20, 50, 19, 62, 34, 39, 61, 10, 100, 20, 50, 19, 62, 34, 39, 61],
-        format: function (val, name) {
-          return val.toFixed(2);
-        }
-      },{
-        name: '日预算金额',
+          name: '日实际消费',
           color: '#c1acfe',
-        data: [70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70],
-        format: function (val, name) {
+          data: this.data.lineChartData.daySpending,
+          format: function (val, name) {
           return val.toFixed(2);
-        }
+          }
+        },{
+          name: '日预算金额',
+          color: '#ffffff',
+          data: this.data.lineChartData.dayBudget,
+          format: function (val, name) {
+            return val.toFixed(2);
+          }
       }],
       animation:false,
       xAxis: {
@@ -91,7 +124,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.createAreaCharts();
+    
   },
 
   /**
