@@ -1,2 +1,8 @@
 <!--pages/statistics/statistics.wxml-->
-<text>pages/statistics/statistics.wxml</text>
+<view class="statistics"></view>
+<view>
+    <!-- 沉浸栏 -->
+    <view style="width:100%;height:{{statusBarHeight}}px;"></view>
+    <view class="content"></view>
+    <canvas canvas-id="areaCanvas" disable-scroll="true" class="canvas"></canvas>
+</view>

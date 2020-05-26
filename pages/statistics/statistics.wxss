@@ -1,1 +1,19 @@
 /* pages/statistics/statistics.wxss */
+.canvas {
+  width: 90%;
+  margin: 0 auto;
+  height: 500rpx;
+}
+
+.content {
+  height: 800rpx;
+}
+
+.statistics {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(180deg, #8068da, #4a2ba0);
+}

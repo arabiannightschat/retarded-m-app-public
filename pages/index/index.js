@@ -321,7 +321,7 @@ Page({
         },
         min: 0,
         fontColor: '#333',
-        gridColor :'#eee'
+        gridColor :'#efefef'
       },
       width: windowWidth,
       height: 200,
