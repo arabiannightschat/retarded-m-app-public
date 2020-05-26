@@ -29,3 +29,7 @@
 ```
 
 6. 变更时，修改 symbol_url 再执行 npx iconfont-wechat 即可
+
+
+#### wx-charts 
+https://github.com/xiaolin3303/wx-charts
