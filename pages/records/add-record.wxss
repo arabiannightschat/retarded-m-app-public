@@ -1,4 +1,4 @@
-/* pages/accounts/add-account.wxss */
+/* pages/records/add-record.wxss */
 .index {
   font-size: 25rpx;
   color: #333;

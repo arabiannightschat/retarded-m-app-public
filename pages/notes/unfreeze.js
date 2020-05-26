@@ -1,5 +1,6 @@
 // pages/notes/unfreeze.js
 var app = getApp();
+var common = require('../../utils/common.js')
 Page({
 
   /**
@@ -33,15 +34,7 @@ Page({
       method: "post",
       success: data => {
         wx.hideLoading()
-        wx.showToast({
-          title: '已解冻账本',
-          icon: 'success',
-          duration: 400,
-          mask: true
-        });
-        setTimeout(function () {
-          wx.navigateBack();
-        }, 400)
+        common.toastSuccessAndBack('已解冻账本')
       }
     })
   },

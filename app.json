@@ -2,18 +2,12 @@
   "pages": [
     "pages/index/index",
 
-    "pages/accounts/add-account",
+    "pages/records/add-record",
 
     "pages/notes/unfreeze",
     "pages/notes/init",
 
-    "pages/statistics/month",
-    
-    "pages/records/records",
-    "pages/notes/notes",
-    "pages/type-manager/type-manager",
-    "pages/mine/mine",
-    "pages/mine/feedback/feedback"
+    "pages/statistics/statistics"
   ],
   "window": {
     "navigationStyle": "custom"

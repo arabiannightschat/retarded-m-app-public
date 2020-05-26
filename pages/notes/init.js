@@ -1,4 +1,5 @@
 // pages/notes/init.js
+var common = require("../../utils/common.js")
 var app = getApp();
 Page({
 
@@ -11,6 +12,10 @@ Page({
   },
 
   bindGetUserInfo: function(e){
+    if (!e.detail.userInfo) {
+      common.toastWarning('微信授权登录失败 :（')
+      return;
+    }
     if(!this.data.authUserInfo) {
       wx.request({
         url: app.globalData.baseUrl + 'api/sys/user/addUserInfo',
@@ -23,7 +28,7 @@ Page({
         },
         method: 'post',
         success: data => {
-          console.log("-- 微信授权登录成功" + e.detail.userInfo)
+          console.log("-- 微信授权登录成功!" + e.detail.userInfo)
         }
       })
     }
@@ -34,11 +39,7 @@ Page({
     var that = this;
     // 校验数据
     if (this.data.monthBudget == 0 || this.data.monthBudget == '') {
-      wx.showToast({
-        title: '您还没有设定月预算呀',
-        icon: 'none',
-        duration: 400
-      })
+      common.toastWarning('还没有设定月预算呀')
       return;
     }
 
@@ -57,15 +58,7 @@ Page({
       method: "post",
       success: data => {
         wx.hideLoading()
-        wx.showToast({
-          title: '已创建',
-          icon: 'success',
-          duration: 400,
-          mask: true
-        });
-        setTimeout(function () {
-          wx.navigateBack();
-        }, 400)
+        common.toastSuccessAndBack("授权登录成功！")
       }
     })
   },

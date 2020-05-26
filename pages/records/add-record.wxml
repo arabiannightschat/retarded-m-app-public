@@ -1,4 +1,4 @@
-<!--pages/accounts/add-account.wxml-->
+<!--pages/records/add-record.wxml-->
 <view class="index">
   <!-- 顶部 -->
   <view class="top">

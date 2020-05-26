@@ -1,4 +1,4 @@
-// pages/statistics/month.js
+// pages/statistics/statistics.js
 Page({
 
   /**

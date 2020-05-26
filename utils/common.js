@@ -1,33 +1,29 @@
 
 function toastSuccessAndBack(info) {
-  wx.showToast({
-    title: info,
-    icon: 'success',
-    duration: 400,
-    mask: true
-  });
+  toastSuccess(info)
   setTimeout(function () {
     wx.navigateBack();
-  }, 400)
+  }, 800)
 }
 
 function toastSuccess(info) {
   wx.showToast({
     title: info,
     icon: 'success',
-    duration: 400,
+    image: '../../images/icon/success.png',
+    duration: 800,
     mask: true
   });
 }
 
-function toastInfo(info) {
+function toastWarning(info) {
   wx.showToast({
     title: info,
-    icon: 'none',
-    duration: 400
-  });
+    image: '../../images/icon/warning.png',
+    duration: 1000
+  })
 }
 
 module.exports.toastSuccessAndBack = toastSuccessAndBack;
 module.exports.toastSuccess = toastSuccess;
-module.exports.toastInfo = toastInfo;
+module.exports.toastWarning = toastWarning;

@@ -84,9 +84,6 @@ Page({
   onShow: function () {
     if (app.globalData.isLoginCompleted) {
       console.log("-- 完成登录后每次打开页面刷新")
-      this.setData({
-        loading:true
-      })
       this.getRecentData();
     }
   },
@@ -166,13 +163,13 @@ Page({
 
   toMonthStatistics: function () {
     wx.navigateTo({
-      url: '../statistics/month',
+      url: '../statistics/statistics',
     })
   },
 
   startRecord: function() {
     wx.navigateTo({
-      url: '../accounts/add-account',
+      url: '../records/add-record',
     })
   },
 
@@ -180,7 +177,7 @@ Page({
     var dt = e.currentTarget.dataset.dt
     console.log(dt)
     wx.navigateTo({
-      url: '../accounts/add-account?dt=' + dt,
+      url: '../records/add-record?dt=' + dt,
     })
   },
 

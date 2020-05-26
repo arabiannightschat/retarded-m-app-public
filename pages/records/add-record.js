@@ -1,4 +1,4 @@
-// pages/accounts/add-account.js
+// pages/records/add-record.js
 var app = getApp();
 var dateUtils = require("../../utils/date.js");
 var commUtils = require("../../utils/common.js")
@@ -87,7 +87,7 @@ Page({
   addRecord: function() {
     console.log(this.data.checkedTypeId)
     if (!this.data.checkedTypeId){
-      commUtils.toastInfo("还没选择记账类型")
+      commUtils.toastWarning("还没选择记账类型")
       return;
     }
     wx.request({
