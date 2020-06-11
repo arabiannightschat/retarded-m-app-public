@@ -3,6 +3,7 @@
 <view>
     <!-- 沉浸栏 -->
     <view style="width:100%;height:{{statusBarHeight}}px;"></view>
-    <view class="content"></view>
-    <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
+    <view class="canvas-wrap">
+        <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
+    </view>
 </view>

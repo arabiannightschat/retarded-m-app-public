@@ -64,8 +64,12 @@
     </view>
   </view>
   <!-- 记账入口 -->
-  <view class="new-records-icon" bindtap="startRecord">
+  <view class="new-records-icon active-icon" bindtap="startRecord">
     <iconfont name="gona" size="80" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
+  </view>
+  <!-- 刷新 -->
+  <view class="refresh-icon {{refreshActive?'active-color':''}}" bindtap="refresh">
+    <iconfont name="refresh" size="85"/>
   </view>
 </view>
 

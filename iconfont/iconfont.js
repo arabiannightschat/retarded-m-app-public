@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // settle | else | else-2 | study-2 | study-3 | study | study-4 | wear-2 | wear-3 | income | love | daily | relax | backspace | arrow-down | back | food-3 | food-2 | wear | air | food | pretty | house | backup | gona
+    // refresh | settle | else | else-2 | study-2 | study-3 | study | study-4 | wear-2 | wear-3 | income | love | daily | relax | backspace | arrow-down | back | food-3 | food-2 | wear | air | food | pretty | house | backup | gona
     name: {
       type: String,
     },

@@ -138,7 +138,8 @@ Page({
           setTimeout(function(){
             that.setData({
               noRecordsMessage: title,
-              loading: false
+              loading: false,
+              refreshActive: false
             })
           },200)
           return;
@@ -148,7 +149,8 @@ Page({
           recordsLoadingCount: d.recordsLoadingCount
         })
         this.setData({
-          loading: false
+          loading: false,
+          refreshActive: false
         })
       }
     });
@@ -186,6 +188,10 @@ Page({
    */
   getRecentData: function () {
     console.log("-- 准备请求最近数据 ",wx.getStorageSync('sessionId'))
+    this.setData({
+      recordsLoadingCount: 0,   // 上拉加载更多次数
+      noRecordsMessage: ''
+    })
     wx.request({
       url: app.globalData.baseUrl + "api/notes/dayStatistics/getRecentData",
       header: {
@@ -239,7 +245,8 @@ Page({
         }, () => {
           if (d.note.monthStatisticsState != 0){
             this.setData({
-              loading: false
+              loading: false,
+              refreshActive: false
             })
           }
         })
@@ -263,7 +270,8 @@ Page({
               this.setData({
                 lastD: lastD,
                 modalingGray: true,
-                loading: false
+                loading: false,
+                refreshActive: false
               })
               console.log("-- 月份结算", lastD);
             }
@@ -410,4 +418,15 @@ Page({
       }
     });
   },
+
+  refresh: function(){
+    this.setData({
+      loading: true,
+      refreshActive: true
+    })
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+    this.getRecentData(); 
+  }
 })

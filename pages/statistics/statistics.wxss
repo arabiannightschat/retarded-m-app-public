@@ -1,12 +1,15 @@
 /* pages/statistics/statistics.wxss */
-.canvas {
-  width: 90%;
-  margin: 0 auto;
+.canvas-wrap {
+  position: fixed;
+  bottom: 50rpx;
   height: 500rpx;
+  width: 100%;
 }
 
-.content {
-  height: 800rpx;
+.canvas {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .statistics {
@@ -15,5 +18,5 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-image: linear-gradient(180deg, #8068da, #4a2ba0);
+  background-image: linear-gradient(180deg, #fc677a, #fc677a);
 }

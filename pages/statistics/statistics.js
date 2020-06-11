@@ -77,7 +77,7 @@ Page({
       categories: this.data.lineChartData.categories,
       series: [{
           name: '日实际消费',
-          color: '#c1acfe',
+          color: '#ffafaa',
           data: this.data.lineChartData.daySpending,
           format: function (val, name) {
           return val.toFixed(2);
@@ -101,7 +101,7 @@ Page({
         },
         min: 0,
         fontColor: '#fff',
-        gridColor: '#664ab7',
+        gridColor: '#fe8c96',
       },
       extra: {
         lineStyle: 'curve',

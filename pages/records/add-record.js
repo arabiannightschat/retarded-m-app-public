@@ -56,7 +56,7 @@ Page({
       }
     })
 
-    var firstDayOfMonth = dateUtils.getFirstDayOfMonth(new Date());
+    var firstDayOfMonth = dateUtils.getLastMonthDay(1);
     var now = dateUtils.format(new Date())
     this.setData({
       firstDayOfMonth: firstDayOfMonth,

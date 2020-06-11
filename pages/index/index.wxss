@@ -165,6 +165,18 @@
   padding: 15rpx;
 }
 
+.refresh-icon {
+  position: fixed;
+  right: 80rpx;
+  bottom: 80rpx;
+  box-shadow: 4px 4px 5px 0px #efefef;
+  padding: 10rpx;
+}
+
+.active-icon:active, .active-color {
+  background: #ffe2e2;
+}
+
 .daily-records {
   position: relative;
 }
