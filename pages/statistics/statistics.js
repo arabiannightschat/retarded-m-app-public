@@ -69,22 +69,20 @@ Page({
     }
 
     this.data.lineChart = new wxCharts({
-      canvasId: 'lineCanvas',
+      canvasId: 'lineCanvasMonth',
       width: windowWidth,
       background: 'rgba(0,0,0,0)',
-      height: 250,
+      height: 200,
       type: 'line',
       categories: this.data.lineChartData.categories,
       series: [{
           name: '日实际消费',
-          color: '#ffafaa',
           data: this.data.lineChartData.daySpending,
           format: function (val, name) {
           return val.toFixed(2);
           }
         },{
           name: '日预算金额',
-          color: '#ffffff',
           data: this.data.lineChartData.dayBudget,
           format: function (val, name) {
             return val.toFixed(2);
@@ -93,19 +91,19 @@ Page({
       animation:false,
       xAxis: {
         disableGrid: true,
-        fontColor: '#fff'
+        fontColor: '#333'
       },
       yAxis: {
         format: function (val) {
           return val.toFixed(0);
         },
         min: 0,
-        fontColor: '#fff',
-        gridColor: '#fe8c96',
+        fontColor: '#333',
+        gridColor: '#efefef',
       },
       extra: {
         lineStyle: 'curve',
-        legendTextColor: '#fff'
+        legendTextColor: '#333'
       },
       dataLabel: false,
       dataPointShape: false,

@@ -1,9 +1,17 @@
 <!--pages/statistics/statistics.wxml-->
-<view class="statistics"></view>
-<view>
-    <!-- 沉浸栏 -->
-    <view style="width:100%;height:{{statusBarHeight}}px;"></view>
-    <view class="canvas-wrap">
-        <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
+<view class="statistics">
+    <image src="../../images/statistics/gradient-top.jpg" class="gradient-top" />
+    <view class="main">
+      <!-- 沉浸栏 -->
+      <view style="width:100%;height:{{statusBarHeight}}px;"></view>
+      <view class="title">统计</view>
+      <view class="card">
+          <view class="card-content">
+              <!-- 图表 -->
+              <view class="canvas-wrap">
+                  <canvas canvas-id="lineCanvasMonth" disable-scroll="true" class="canvas"></canvas>
+              </view>
+          </view>
+      </view>
     </view>
 </view>
