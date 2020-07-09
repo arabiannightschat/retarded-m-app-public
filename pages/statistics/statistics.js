@@ -63,8 +63,8 @@ Page({
     var windowWidth = 320;
     try {
       var res = wx.getSystemInfoSync();
-      windowWidth = res.windowWidth * 0.9
-    } catch (e) {
+      windowWidth = res.windowWidth * 0.8
+    } catch (e) { 
       console.error('getSystemInfoSync failed!');
     }
 
@@ -109,6 +109,10 @@ Page({
       dataPointShape: false,
     });
     console.log("-- 绘制图表完成")
+  },
+
+  back: function () {
+    wx.navigateBack();
   },
 
   /**

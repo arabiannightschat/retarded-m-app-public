@@ -16,7 +16,7 @@
 
 .card {
   width: 670rpx;
-  margin: 40rpx auto;
+  margin: 30rpx auto;
   background: white;
   border-radius: 20rpx; 
   box-shadow: 0px 10px 5px 0px #eeeeee;
@@ -28,7 +28,6 @@
 }
 
 .canvas-wrap {
-  margin-top: 50rpx;
   height: 100%;
   position: relative;
   left: -15rpx;
@@ -39,4 +38,21 @@
   height: 200px;
 }
 
+.title-wrap {
+  text-align: center;
+  color: #fff;
+  font-size: 35rpx;
+  display: flex;
+  margin-top: 20rpx;
+}
 
+.title-wrap .icon {
+  margin-left: 20rpx;
+  position: relative;
+  top: -11rpx;
+  padding: 20rpx;
+}
+
+.title-wrap .text {
+  margin-left: 10rpx;
+}
