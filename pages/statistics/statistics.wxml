@@ -1,21 +1,35 @@
 <!--pages/statistics/statistics.wxml-->
 <view class="statistics">
-    <image src="../../images/statistics/gradient-top.jpg" class="gradient-top" />
-    <view class="main">
-      <!-- 沉浸栏 -->
-      <view style="width:100%;height:{{statusBarHeight}}px;"></view>
-      <!-- 标题栏 -->
+  <image src="../../images/statistics/gradient-top.jpg" class="gradient-top" />
+  <view class="main">
+    <!-- 沉浸栏 -->
+    <view style="width:100%;height:{{statusBarHeight}}px;"></view>
+    <!-- 标题栏 -->
     <view class="title-wrap">
-      <iconfont bindtap="back" class="icon" name="back" size="30" color="#fff"/>
+      <iconfont bindtap="back" class="icon" name="back" size="30" color="#fff" />
       <view class="text">统计</view>
     </view>
-      <view class="card">
-          <view class="card-content">
-              <!-- 图表 -->
-              <view class="canvas-wrap">
-                  <canvas canvas-id="lineCanvasMonth" disable-scroll="true" class="canvas"></canvas>
-              </view>
-          </view>
+    <!-- 功能按钮 -->
+    <view class="wrap">
+      <view class="inset-shadow">2020年7月</view>
+    </view>
+    <view class="card">
+      <view class="card-content">
+        <!-- 饼图 -->
+        <canvas canvas-id="ringCanvasMonth" disable-scroll="true" class="canvas-ring"></canvas>
+        <view class="stat-info">
+          <view class="stat-1">本月花销</view>
+          <view class="stat-2"><text class="small-font">￥</text> 2160.00</view>
+          <view class="stat-1">预计花销</view>
+          <view class="stat-2"><text class="small-font">￥</text> 2300.00</view>
+          <view class="stat-1">预算余额</view>
+          <view class="stat-2"><text class="small-font">￥</text> 400.00</view>
+        </view>
+      </view>
+      <view class="card-content">
+        <!-- 曲线图 -->
+        <canvas canvas-id="lineCanvasMonth" disable-scroll="true" class="canvas"></canvas>
       </view>
     </view>
+  </view>
 </view>

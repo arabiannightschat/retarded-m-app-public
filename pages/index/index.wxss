@@ -54,7 +54,7 @@
   margin: 40rpx auto;
   background: white;
   border-radius: 20rpx; 
-  box-shadow: 0px 10px 5px 0px #eeeeee;
+  box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.1);
   position: relative
 }
 
