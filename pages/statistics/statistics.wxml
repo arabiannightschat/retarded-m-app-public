@@ -11,7 +11,7 @@
     </view>
     <!-- 功能按钮 -->
     <view class="wrap">
-      <view class="inset-shadow">2020年7月</view>
+      <view class="inset-shadow">{{currMonth}}</view>
     </view>
     <view class="card">
       <view class="card-content">
@@ -19,11 +19,13 @@
         <canvas canvas-id="ringCanvasMonth" disable-scroll="true" class="canvas-ring"></canvas>
         <view class="stat-info">
           <view class="stat-1">本月花销</view>
-          <view class="stat-2"><text class="small-font">￥</text> 2160.00</view>
+          <view class="stat-2"><text class="small-font">￥</text> {{monthStatistics.monthSpending}}</view>
           <view class="stat-1">预计花销</view>
-          <view class="stat-2"><text class="small-font">￥</text> 2300.00</view>
+          <view class="stat-2"><text class="small-font">￥</text> {{monthStatistics.monthBudget}}</view>
           <view class="stat-1">预算余额</view>
-          <view class="stat-2"><text class="small-font">￥</text> 400.00</view>
+          <view class="stat-2"><text class="small-font">￥</text> {{monthStatistics.balance}}</view>
+          <view class="stat-1">平均花销</view>
+          <view class="stat-2"><text class="small-font">￥</text> {{monthStatistics.avgDaySpending}}</view>
         </view>
       </view>
       <view class="card-content">

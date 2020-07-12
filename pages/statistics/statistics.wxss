@@ -62,7 +62,7 @@
   text-align: center;
   color: white;
   font-size: 25rpx;
-  width: 200rpx;
+  width: 240rpx;
   height: 80rpx;
   line-height: 80rpx;
   border-radius: 40rpx;

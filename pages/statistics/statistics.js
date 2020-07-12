@@ -14,7 +14,9 @@ Page({
       daySpending: [0], // 日花销
       dayBudget: [0] // 日预算
     },
-    ringChartsData: []
+    ringChartsData: [],
+    monthStatistics: {},
+    currMonth: ''
   },
 
   /**
@@ -40,19 +42,22 @@ Page({
         sessionId: wx.getStorageSync('sessionId')
       },
       data: {
-        monthDate: dateUtils.format(new Date)
+        monthDate: dateUtils.format(new Date())
       },
       method: "get",
       success: data => {
         var d = data.data.data
         console.log(d)
+        d.monthStatistics.monthBudget = d.monthStatistics.monthBudget.toFixed(2)
         this.setData({
           lineChartData: {
             categories: d.categories, // 日期
             daySpending: d.daySpending, // 日花销
             dayBudget: d.dayBudget // 日预算
           },
-          ringChartsData: d.ringChartsData
+          ringChartsData: d.ringChartsData,
+          monthStatistics: d.monthStatistics,
+          currMonth: d.currMonth
         });
         this.createLineCharts();
         this.createRingCharts();
