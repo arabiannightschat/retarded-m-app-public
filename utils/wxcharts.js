@@ -20,7 +20,7 @@ var config = {
     columePadding: 3,
     fontSize: 10,
     dataPointShape: ['diamond', 'circle', 'rect'],
-    colors: ['#9287e7', '#fb6e6c', '#feb64d', '#5bc49f', '#32d3eb', '#60acfc'],
+    colors: ['#9287e7', '#fb6e6c', '#feb64d', '#5bc49f', '#32d3eb', '#60acfc', '#ff7c7c', '#ffda43', '#d660a8', '#9cdc82'],
     pieChartLinePadding: 25,
     pieChartTextPadding: 15,
     xAxisTextPadding: 3,

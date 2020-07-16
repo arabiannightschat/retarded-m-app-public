@@ -43,6 +43,7 @@ Page({
       },
       data: {
         monthDate: dateUtils.format(new Date())
+        // monthDate: '2020-06-01'
       },
       method: "get",
       success: data => {
