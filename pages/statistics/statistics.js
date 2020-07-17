@@ -16,7 +16,11 @@ Page({
     },
     ringChartsData: [],
     monthStatistics: {},
-    currMonth: ''
+    monthText: '',
+    monthDate: dateUtils.format(new Date()),
+    startMonth: '',
+    now: dateUtils.format(new Date())
+    
   },
 
   /**
@@ -32,18 +36,22 @@ Page({
         })
       },
     });
+    var monthText = dateUtils.getYear(new Date(this.data.monthDate)) + ' 年 ' + dateUtils.getMonth(new Date(this.data.monthDate)) + ' 月';   
+    this.setData({
+      monthText: monthText
+    })
     this.getMonthStatistics();
   },
 
   getMonthStatistics() {
+    console.log(this.data.monthDate)
     wx.request({
       url: app.globalData.baseUrl + "api/notes/monthStatistics/getMonthStatistics",
       header: {
         sessionId: wx.getStorageSync('sessionId')
       },
       data: {
-        monthDate: dateUtils.format(new Date())
-        // monthDate: '2020-06-01'
+        monthDate: dateUtils.format(new Date(this.data.monthDate))
       },
       method: "get",
       success: data => {
@@ -58,12 +66,27 @@ Page({
           },
           ringChartsData: d.ringChartsData,
           monthStatistics: d.monthStatistics,
-          currMonth: d.currMonth
+          startMonth: d.startMonth
         });
         this.createLineCharts();
         this.createRingCharts();
       }
     });
+  },
+
+  bindMonthChange(e){
+    var date = e.detail.value
+    this.dateToMonthText(date)
+    this.getMonthStatistics();
+  },
+  dateToMonthText: function (date) {
+    date = new Date(date + "-01")
+    var monthText = dateUtils.getYear(date) + ' 年 ' + dateUtils.getMonth(date) + ' 月';   
+
+    this.setData({
+      monthDate: date,
+      monthText: monthText
+    })
   },
 
   createLineCharts() {

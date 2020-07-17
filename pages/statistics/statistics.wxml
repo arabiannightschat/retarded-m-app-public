@@ -11,7 +11,9 @@
     </view>
     <!-- 功能按钮 -->
     <view class="wrap">
-      <view class="inset-shadow">{{currMonth}}</view>
+      <picker mode="date" value="{{monthDate}}" fields="month" start="{{startMonth}}" end="{{now}}" bindchange="bindMonthChange">
+        <view class="inset-shadow">{{monthText}}</view>
+      </picker>
     </view>
     <view class="card">
       <view class="card-content">
