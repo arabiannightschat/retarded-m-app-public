@@ -59,17 +59,17 @@ Page({
         console.log(d)
         d.monthStatistics.monthBudget = d.monthStatistics.monthBudget.toFixed(2)
         this.setData({
-          lineChartData: {
-            categories: d.categories, // 日期
-            daySpending: d.daySpending, // 日花销
-            dayBudget: d.dayBudget // 日预算
-          },
+          lineChartData: d.lineChartData,
           ringChartsData: d.ringChartsData,
           monthStatistics: d.monthStatistics,
           startMonth: d.startMonth
         });
-        this.createLineCharts();
-        this.createRingCharts();
+        if(d.lineChartData.categories.length > 0){
+          this.createLineCharts();
+        }
+        if(d.ringChartsData.length > 0) {
+          this.createRingCharts();
+        }
       }
     });
   },
@@ -82,7 +82,7 @@ Page({
   dateToMonthText: function (date) {
     date = new Date(date + "-01")
     var monthText = dateUtils.getYear(date) + ' 年 ' + dateUtils.getMonth(date) + ' 月';   
-
+    
     this.setData({
       monthDate: date,
       monthText: monthText
@@ -140,7 +140,7 @@ Page({
       dataLabel: false,
       dataPointShape: false,
     });
-    console.log("-- 绘制图表完成")
+    console.log("-- 绘制折线图完成")
   },
 
   createRingCharts: function() {
@@ -159,6 +159,7 @@ Page({
       height: 200,
       dataLabel: true
     });
+    console.log("-- 绘制饼状图完成")
   },
 
   back: function() {
