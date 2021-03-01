@@ -90,11 +90,11 @@
   </cover-view>
 </cover-view>
 
-<cover-view animation="{{loadingAnimation}}" class="guide guide-dark" wx:if="{{loading}}">
+<cover-view animation="{{loadingAnimation}}" class="guide guide-light" wx:if="{{loading}}">
   <!-- <cover-image class="guide-image-640-480" src="../../images/loading/loading-1.gif"></cover-image> -->
-  <!-- <cover-image class="guide-image-600-450" src="../../images/loading/loading-2.gif"></cover-image> -->
+  <cover-image class="guide-image-600-450" src="../../images/loading/loading-2.gif"></cover-image>
   <!-- <cover-image class="guide-image-640-480" src="../../images/loading/loading-3.gif"></cover-image> -->
-  <cover-image class="guide-image-640-480" src="../../images/loading/loading-4.gif"></cover-image>
+  <!-- <cover-image class="guide-image-640-480" src="../../images/loading/loading-4.gif"></cover-image> -->
   <!-- <cover-image class="guide-image-640-480" src="../../images/loading/loading-5.gif"></cover-image> -->
   <!-- <cover-image class="guide-image-600-450" src="../../images/loading/loading-6.gif"></cover-image> -->
 </cover-view>
