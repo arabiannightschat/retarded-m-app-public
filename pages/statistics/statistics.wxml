@@ -18,7 +18,10 @@
     <view class="card">
       <view class="card-content">
         <!-- 饼图 -->
-        <canvas canvas-id="ringCanvasMonth" disable-scroll="true" class="canvas-ring"></canvas>
+        <canvas wx:if="{{ringChartsData.length > 0}}" canvas-id="ringCanvasMonth" disable-scroll="true" class="canvas-ring"></canvas>
+        <view wx:else class="canvas-ring">
+          <image class="default-ring" src="../../images/statistics/default-ring.png"></image>
+        </view>
         <view class="stat-info">
           <view class="stat-1">本月花销</view>
           <view class="stat-2"><text class="small-font">￥</text> {{monthStatistics.monthSpending}}</view>

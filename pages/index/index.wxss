@@ -11,18 +11,8 @@
   height: 100%;
 }
 
-.guide-dark {
-  background: #09111f
-}
-
 .guide-light {
   background: #fff
-}
-
-.guide-image-640-480 {
-   width: 640rpx;
-   height: 480rpx;
-   margin: 400rpx auto;
 }
 
 .guide-image-600-450 {
@@ -202,14 +192,8 @@
 }
 
 .no-data {
-  width: 200rpx;
-  margin: 150rpx auto 50rpx auto;
-  display: block;
-}
-
-.no-data-2 {
-  width: 200rpx;
-  margin: 200rpx auto 50rpx auto;
+  width: 500rpx;
+  margin: 100rpx auto 50rpx auto;
   display: block;
 }
 

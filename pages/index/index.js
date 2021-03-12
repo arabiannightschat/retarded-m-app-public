@@ -230,16 +230,16 @@ Page({
 
         this.setData({
           simpleData: {
-            balance: d.balance.toFixed(2), // 账本余额
-            dayToNextMonth: d.dayToNextMonth, //距离月末天数
-            year: d.year, // 当前年
-            month: d.month // 当前月
+            balance: d.simpleData.balance.toFixed(2), // 账本余额
+            dayToNextMonth: d.simpleData.dayToNextMonth, //距离月末天数
+            year: d.simpleData.year, // 当前年
+            month: d.simpleData.month // 当前月
           },
           chartsData: {
-            categories: d.categories, // 日期
-            daySpending: d.daySpending, // 日花销
-            dayBudget: d.dayBudget, // 日预算
-            dynamicDayBudget: d.dynamicDayBudget //日动态预算
+            categories: d.chartsData.categories, // 日期
+            daySpending: d.chartsData.daySpending, // 日花销
+            dayBudget: d.chartsData.dayBudget, // 日预算
+            dynamicDayBudget: d.chartsData.dynamicDayBudget //日动态预算
           },
           recentRecords: recentRecords
         }, () => {

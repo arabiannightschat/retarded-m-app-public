@@ -44,7 +44,6 @@ Page({
   },
 
   getMonthStatistics() {
-    console.log(this.data.monthDate)
     wx.request({
       url: app.globalData.baseUrl + "api/notes/monthStatistics/getMonthStatistics",
       header: {
@@ -56,7 +55,6 @@ Page({
       method: "get",
       success: data => {
         var d = data.data.data
-        console.log(d)
         d.monthStatistics.monthBudget = d.monthStatistics.monthBudget.toFixed(2)
         this.setData({
           lineChartData: d.lineChartData,
@@ -69,6 +67,9 @@ Page({
         }
         if(d.ringChartsData.length > 0) {
           this.createRingCharts();
+        } else {
+          // 圆环图为空时的占位图
+          
         }
       }
     });
