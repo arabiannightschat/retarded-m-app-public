@@ -70,7 +70,7 @@ Page({
 
   pickType: function(e) {
     var typeId = e.currentTarget.dataset.typeId;
-    wx.vibrateShort()
+    commUtils.vibrateShort90();
     this.setData({
       checkedTypeId : typeId,
       isShowKeyboard: true

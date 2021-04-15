@@ -24,6 +24,16 @@ function toastWarning(info) {
   })
 }
 
+function vibrateShort90(info) {
+  wx.vibrateShort();
+  wx.vibrateShort();
+  wx.vibrateShort();
+  wx.vibrateShort();
+  wx.vibrateShort();
+  wx.vibrateShort();
+}
+
 module.exports.toastSuccessAndBack = toastSuccessAndBack;
 module.exports.toastSuccess = toastSuccess;
 module.exports.toastWarning = toastWarning;
+module.exports.vibrateShort90 = vibrateShort90;

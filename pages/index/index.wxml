@@ -41,7 +41,9 @@
           <view class="title">
             <view class="align-left">{{item.date}}</view>
             <iconfont name="gona" class="align-left margin-left-5" bindtap="startRecordWithDt" data-dt="{{item.dt}}" size="40" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
-            <view class="align-right">支出：￥{{item.totalSpending}}</view>
+            <!-- 金额为正数则为支出，负数为收入 -->
+            <view wx:if="{{item.totalSpending > 0}}" class="align-right">支出：￥{{item.totalSpending}}</view>
+            <view wx:else class="align-right">收入：￥{{item.totalSpending * -1}}</view>
             <view class="clear-both"></view>
           </view>
           <view class="daily-records" wx:for="{{item.records}}" wx:for-index="index" bindlongpress='modal' data-index='{{index}}' data-p_index='{{p_index}}' wx:key="recordId">

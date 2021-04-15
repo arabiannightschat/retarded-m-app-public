@@ -343,7 +343,7 @@ Page({
   },
 
   modal: function (e) {
-    wx.vibrateShort()
+    commUtils.vibrateShort90();
     var p_index = e.currentTarget.dataset.p_index
     var index = e.currentTarget.dataset.index
     console.log(p_index, index)
