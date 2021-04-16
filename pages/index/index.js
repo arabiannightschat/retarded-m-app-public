@@ -50,6 +50,9 @@ Page({
     app.loginCallback = res => {
       // 登录回调后获取最近数据
       console.log("-- 登录回调事件触发")
+      this.setData({
+        chargeDayCount : wx.getStorageSync('chargeDayCount')
+      })
       this.getRecentData(); 
     }
   },
