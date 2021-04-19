@@ -28,7 +28,7 @@
 
 .top .title {
   margin: 40rpx 0 0 40rpx;
-  color: white;
+  color: black;
 }
 
 .large-font {
@@ -107,7 +107,7 @@
 
 .records-area .title {
   letter-spacing: 7rpx;
-  margin:0 0 10px 0;
+  margin:0 0 5px 0;
   color: #666
 }
 
@@ -147,23 +147,27 @@
   letter-spacing: 7rpx;
 }
 
-.new-records-icon {
+.index-icon {
   position: fixed;
-  right: 200rpx;
   bottom: 80rpx;
   box-shadow: 4px 4px 5px 0px #efefef;
-  padding: 15rpx;
-}
-
-.refresh-icon {
-  position: fixed;
-  right: 80rpx;
-  bottom: 80rpx;
-  box-shadow: 4px 4px 5px 0px #efefef;
+  /* background: white; */
   padding: 10rpx;
 }
 
-.active-icon:active, .active-color {
+.index-icon:nth-child(2) {
+  right: 320rpx;
+}
+
+.index-icon:nth-child(3) {
+  right: 200rpx;
+}
+
+.index-icon:nth-child(4) {
+  right: 80rpx;
+}
+
+.index-icon:active, .active-color {
   background: #ffe2e2;
 }
 

@@ -430,6 +430,14 @@ Page({
     wx.pageScrollTo({
       scrollTop: 0
     })
-    this.getRecentData(); 
+    var that = this
+    setTimeout(function () {
+      that.getRecentData();
+    }, 600);
+     
+  },
+
+  noteManager: function(){
+    commUtils.toastWarning("还不能管理账本")
   }
 })

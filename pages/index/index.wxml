@@ -3,7 +3,7 @@
   <!-- 顶部 -->
   <view class="top">
     <!-- 背景图 -->
-    <image src="../../images/index/background-top.jpg" class="background-top" />
+    <image src="../../images/index/background-top-1.jpg" class="background-top" />
     <view style="position:relative;top:-468rpx;">
       <!-- 沉浸栏 -->
       <view style="width:100%;height:{{statusBarHeight}}px;"></view>
@@ -40,7 +40,7 @@
         <view class="single-day" wx:for="{{recentRecords}}" wx:for-index="p_index" wx:key="date">
           <view class="title">
             <view class="align-left">{{item.date}}</view>
-            <iconfont name="gona" class="align-left margin-left-5" bindtap="startRecordWithDt" data-dt="{{item.dt}}" size="40" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
+            <iconfont name="youhuiquan" class="align-left margin-left-5" bindtap="startRecordWithDt" data-dt="{{item.dt}}" size="40" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
             <!-- 金额为正数则为支出，负数为收入 -->
             <view wx:if="{{item.totalSpending > 0}}" class="align-right">支出：￥{{item.totalSpending}}</view>
             <view wx:else class="align-right">收入：￥{{item.totalSpending * -1}}</view>
@@ -66,12 +66,16 @@
     </view>
   </view>
   <!-- 记账入口 -->
-  <view class="new-records-icon active-icon" bindtap="startRecord">
-    <iconfont name="gona" size="80" color="{{['#ffe2e2', '#ff8284', '#fd6365']}}" />
+  <view class="index-icon" bindtap="startRecord">
+    <iconfont name="youhuiquan" size="80" color="{{['#fe5856', '#333333']}}" />
+  </view>
+  <!-- 账本 -->
+  <view class="index-icon" bindtap="noteManager">
+    <iconfont name="kabao" size="80" color="{{['#fe5856', '#333333']}}" />
   </view>
   <!-- 刷新 -->
-  <view class="refresh-icon {{refreshActive?'active-color':''}}" bindtap="refresh">
-    <iconfont name="refresh" size="85"/>
+  <view class="index-icon {{refreshActive?'active-color':''}}" bindtap="refresh">
+    <iconfont name="tishi" size="80" color="{{['#fe5856', '#333333']}}" />
   </view>
 </view>
 
